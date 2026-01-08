@@ -4,7 +4,7 @@ import SettingsBar from "./SettingsBar";
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center p-4 bg-neutral-700 mb-4">
+    <header className="flex justify-between items-center p-4 bg-neutral-700">
       <h1>Loadout Lab</h1>
       <div className="flex flex-col items-center">
         <h2>72 Hour Urban Survival Kit</h2>
