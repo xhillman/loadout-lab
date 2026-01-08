@@ -1,7 +1,7 @@
-export default function CategoryTile() {
+export default function CategoryTile({ category }: { category: string }) {
   return (
     <div>
-      <h2>Category Tile</h2>
+      <h2>{category}</h2>
     </div>
   );
 }
