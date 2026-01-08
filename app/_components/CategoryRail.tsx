@@ -12,7 +12,7 @@ export default function CategoryRail() {
           <CategoryTile key={category} category={category} />
         ))}
       </div>
-      <button className="gear-list-button block">Gear List</button>
+      <button className="gear-list-button w-full mb-2 border border-neutral-700 rounded flex items-center justify-between py-2 px-4 cursor-pointer hover:border-neutral-600 transition-all duration-300 text-2xl font-bold">Gear List</button>
     </div>
   );
 }
