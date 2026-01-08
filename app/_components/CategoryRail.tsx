@@ -1,20 +1,14 @@
 import CategoryTile from "./CategoryTile";
+import categories from "../_data/categories.json";
 
 export default function CategoryRail() {
-  const categories = [
-    "All",
-    "Water",
-    "Fire",
-    "Shelter",
-    "Food",
-    "Medical",
-    "Tools",
-  ];
+
+  const categoryList = categories.categories;
 
   return (
     <div className="category-rail h-full flex flex-col justify-between">
       <div>
-        {categories.map((category) => (
+        {categoryList.map((category) => (
           <CategoryTile key={category} category={category} />
         ))}
       </div>
