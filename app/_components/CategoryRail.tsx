@@ -12,12 +12,12 @@ export default function CategoryRail({ selectedCategory, onSelectCategory }: Cat
 
   return (
     <div className="category-rail h-full flex flex-col justify-between">
-      <div>
+      <ul>
         {categoryList.map((category) => (
           <CategoryTile key={category} category={category} selectedCategory={selectedCategory} onSelect={onSelectCategory} />
         ))}
-      </div>
-      <button className="gear-list-button w-full mb-2 border border-neutral-700 rounded flex items-center justify-between py-2 px-4 cursor-pointer hover:border-neutral-600 transition-all duration-300 text-2xl font-bold">Gear List</button>
+      </ul>
+      <button className="gear-list-button w-full mb-2 border border-neutral-100/10 rounded flex items-center justify-between py-2 px-4 cursor-pointer hover:border-neutral-600 transition-all duration-200 text-2xl font-bold">Gear List</button>
     </div>
   );
 }

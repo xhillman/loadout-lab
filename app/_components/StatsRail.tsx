@@ -4,7 +4,7 @@ import WarningPanel from "./WarningPanel";
 
 export default function StatsRail() {
   return (
-    <div className="stats-rail h-full flex flex-col gap-4">
+    <div className="stats-rail h-full flex flex-col gap-4 bg-transparent">
       <StatsPanel />
       <CoveragePanel />
       <WarningPanel />

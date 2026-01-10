@@ -6,6 +6,7 @@ import Header from "./_components/Header";
 import CategoryRail from "./_components/CategoryRail";
 import ItemBrowser from "./_components/ItemBrowser";
 import StatsRail from "./_components/StatsRail";
+import SettingsBar from "./_components/SettingsBar";
 
 import items from "./_data/items.json";
 import { Item } from "./_types";
@@ -26,14 +27,15 @@ export default function Home() {
   return (
     <div className="app font-mono">
       <Header />
-      <main className="grid grid-cols-12 min-h-[calc(100vh-80px)]">
-        <div className="col-span-2 h-full bg-neutral-950 p-4">
+      <SettingsBar />
+      <main className="grid grid-cols-12 min-h-[calc(100vh-110px)]">
+        <div className="col-span-2 h-full bg-transparent p-4 shadow-xl/60">
           <CategoryRail selectedCategory={selectedCategory} onSelectCategory={(category) => setSelectedCategory(category)}/>
         </div>
-        <div className="col-span-7 h-full bg-neutral-950">
+        <div className="col-span-7 h-full bg-transparent">
           <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay} />
         </div>
-        <div className="col-span-3 h-full bg-neutral-950 p-4">
+        <div className="col-span-3 h-full bg-transparent p-4 shadow-xl/60">
           <StatsRail />
         </div>
       </main>
