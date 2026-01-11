@@ -33,12 +33,6 @@ export default function Home() {
     },
   });
 
-  const [maxKitWeight, setMaxKitWeight] = useState(25); // in lbs
-
-  const currentKitWeight = useMemo(() => {
-    return currentKit.items.reduce((currentWeightLbs, item) => currentWeightLbs + item.weight_oz / 16, 0).toFixed(2);
-  }, [currentKit]);
-
   const addItemToKit = (item: Item) => {
     setCurrentKit((prevKit) => ({
       ...prevKit,
@@ -58,7 +52,7 @@ export default function Home() {
           <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay} addItemToKit={addItemToKit} />
         </div>
         <div className="col-span-3 h-full bg-transparent p-4 shadow-xl/60">
-          <StatsRail currentKit={currentKit} maxKitWeight={maxKitWeight} currentKitWeight={currentKitWeight} />
+          <StatsRail currentKit={currentKit} />
         </div>
       </main>
     </div>
