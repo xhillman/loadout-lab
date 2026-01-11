@@ -2,13 +2,13 @@ import { Item, Kit } from "../_types";
 
 type ItemCardProps = {
   item: Item;
-  addItemToKit: (item: Item) => void;
+  toggleItemInKit: (item: Item) => void;
   currentKit: Omit<Kit, "id" | "created_at" | "updated_at">;
 };
 
 export default function ItemCard({
   item,
-  addItemToKit,
+  toggleItemInKit,
   currentKit,
 }: ItemCardProps) {
   const isItemInKit = currentKit.items.some(
@@ -29,7 +29,7 @@ export default function ItemCard({
           className={`border ${
             isItemInKit ? " border-red-500/20 bg-red-500/10 hover:border-red-500/30 hover:bg-red-500/20" : " bg-green-600/10  border-green-600/20 hover:border-green-600/30 hover:bg-green-600/20"
           }   text-lg font-bold px-4 py-2 rounded cursor-pointer shadow-md/30 transition-all duration-200`}
-          onClick={() => addItemToKit(item)}
+          onClick={() => toggleItemInKit(item)}
         >
           {isItemInKit ? "Remove" : "+ Add"}
         </button>

@@ -33,11 +33,10 @@ export default function Home() {
     },
   });
 
-  const addItemToKit = (item: Item) => {
-    console.log(item);
+  const toggleItemInKit = (item: Item) => {
     setCurrentKit((prevKit) => ({
       ...prevKit,
-      items: [...prevKit.items, item],
+      items: prevKit.items.includes(item) ? prevKit.items.filter((kitItem) => kitItem.id !== item.id) : [...prevKit.items, item],
     }));
   }
 
@@ -54,7 +53,7 @@ export default function Home() {
           <CategoryRail selectedCategory={selectedCategory} onSelectCategory={(category) => setSelectedCategory(category)}/>
         </div>
         <div className="col-span-7 h-full bg-transparent">
-          <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay} addItemToKit={addItemToKit} currentKit={currentKit} />
+          <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay} toggleItemInKit={toggleItemInKit} currentKit={currentKit} />
         </div>
         <div className="col-span-3 h-full bg-transparent p-4 shadow-xl/60">
           <StatsRail currentKit={currentKit} />
