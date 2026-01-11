@@ -9,9 +9,11 @@ import StatsRail from "./_components/StatsRail";
 import SettingsBar from "./_components/SettingsBar";
 
 import items from "./_data/items.json";
-import { Item, Kit } from "./_types";
+import categories from "./_data/categories.json";
+import { Item, Kit, Category } from "./_types";
 
 const itemList: Item[] = items as Item[];
+const categoryList: Category[] = categories.categories as Category[];  
 
 export default function Home() {
 
@@ -32,6 +34,15 @@ export default function Home() {
       max_budget_usd: 300,
     },
   });
+
+  const coverage = categoryList.map((category) => {
+    return {
+      name: category.name,
+      coverage: category.coverage,
+    }
+  })
+
+  console.log(coverage);
 
   const toggleItemInKit = (item: Item) => {
     setCurrentKit((prevKit) => ({
@@ -56,7 +67,7 @@ export default function Home() {
           <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay} toggleItemInKit={toggleItemInKit} currentKit={currentKit} />
         </div>
         <div className="col-span-3 h-full bg-transparent p-4 shadow-xl/60">
-          <StatsRail currentKit={currentKit} />
+          <StatsRail currentKit={currentKit} categoryList={categoryList} coverage={coverage}/>
         </div>
       </main>
     </div>

@@ -22,3 +22,8 @@ export type Kit = {
     max_budget_usd: number;
   };
 };
+
+export type Category = {
+  name: string;
+  coverage: number;
+};

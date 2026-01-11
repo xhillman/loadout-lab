@@ -38,7 +38,7 @@ export default function CategoryTile({
         } rounded flex items-center justify-between py-2 px-4 `}
       >
         <h2 className="text-xl font-bold flex items-center gap-3">{icon} {category}</h2>
-        <div className="h-4 w-4 rounded-full bg-red-500/90"></div>
+        <div className="h-4 w-4 rounded-full bg-red-500/30 border border-red-500/40"></div>
       </div>
     </li>
   );
