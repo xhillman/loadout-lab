@@ -35,15 +35,6 @@ export default function Home() {
     },
   });
 
-  const coverage = categoryList.map((category) => {
-    return {
-      name: category.name,
-      coverage: category.coverage,
-    }
-  })
-
-  console.log(coverage);
-
   const toggleItemInKit = (item: Item) => {
     setCurrentKit((prevKit) => ({
       ...prevKit,
@@ -61,13 +52,13 @@ export default function Home() {
       <SettingsBar />
       <main className="grid grid-cols-12 min-h-[calc(100vh-110px)]">
         <div className="col-span-2 h-full bg-transparent p-4 shadow-xl/60">
-          <CategoryRail selectedCategory={selectedCategory} onSelectCategory={(category) => setSelectedCategory(category)}/>
+          <CategoryRail selectedCategory={selectedCategory} onSelectCategory={(category) => setSelectedCategory(category)} currentKit={currentKit}/>
         </div>
         <div className="col-span-7 h-full bg-transparent">
           <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay} toggleItemInKit={toggleItemInKit} currentKit={currentKit} />
         </div>
         <div className="col-span-3 h-full bg-transparent p-4 shadow-xl/60">
-          <StatsRail currentKit={currentKit} categoryList={categoryList} coverage={coverage}/>
+          <StatsRail currentKit={currentKit} categoryList={categoryList} />
         </div>
       </main>
     </div>
