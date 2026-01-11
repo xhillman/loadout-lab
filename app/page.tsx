@@ -9,7 +9,7 @@ import StatsRail from "./_components/StatsRail";
 import SettingsBar from "./_components/SettingsBar";
 
 import items from "./_data/items.json";
-import { Item } from "./_types";
+import { Item, Kit } from "./_types";
 
 const itemList: Item[] = items as Item[];
 
@@ -24,8 +24,30 @@ export default function Home() {
       item.category.toLowerCase() === selectedCategory.toLowerCase());
   }, [selectedCategory]);
 
+  const [currentKit, setCurrentKit] = useState<Omit<Kit, 'id' | 'created_at' | 'updated_at'>>({
+    name: "Untitled Kit",
+    items: [],
+    constraints: {
+      max_weight_oz: 400,
+      max_budget_usd: 300,
+    },
+  });
+
+  const [maxKitWeight, setMaxKitWeight] = useState(25); // in lbs
+
+  const currentKitWeight = useMemo(() => {
+    return currentKit.items.reduce((currentWeightLbs, item) => currentWeightLbs + item.weight_oz / 16, 0).toFixed(2);
+  }, [currentKit]);
+
+  const addItemToKit = (item: Item) => {
+    setCurrentKit((prevKit) => ({
+      ...prevKit,
+      items: [...prevKit.items, item],
+    }));
+  }
+
   return (
-    <div className="app font-mono">
+    <div className="app font-rajdhani">
       <Header />
       <SettingsBar />
       <main className="grid grid-cols-12 min-h-[calc(100vh-110px)]">
@@ -33,10 +55,10 @@ export default function Home() {
           <CategoryRail selectedCategory={selectedCategory} onSelectCategory={(category) => setSelectedCategory(category)}/>
         </div>
         <div className="col-span-7 h-full bg-transparent">
-          <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay} />
+          <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay} addItemToKit={addItemToKit} />
         </div>
         <div className="col-span-3 h-full bg-transparent p-4 shadow-xl/60">
-          <StatsRail />
+          <StatsRail currentKit={currentKit} maxKitWeight={maxKitWeight} currentKitWeight={currentKitWeight} />
         </div>
       </main>
     </div>

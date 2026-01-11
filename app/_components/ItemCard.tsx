@@ -1,6 +1,11 @@
 import { Item } from "../_types";
 
-export default function ItemCard({ item }: { item: Item }) {
+type ItemCardProps = {
+  item: Item;
+  addItemToKit: (item: Item) => void;
+};
+
+export default function ItemCard({ item, addItemToKit }: ItemCardProps) {
   return (
     <div className="item-card p-2 border border-neutral-100/10 shadow-lg/50 rounded flex flex-col justify-between min-h-[180px] hover:border-amber-200/30 hover:scale-103 transition-all duration-200">
       <div>
@@ -9,7 +14,7 @@ export default function ItemCard({ item }: { item: Item }) {
       </div>
       <div className="item-card-footer flex justify-between items-end">
         <p className="text-lg font-bold">${item.price_usd}</p>
-        <button className="bg-neutral-600/20 border border-neutral-100/20 hover:bg-amber-200/10 hover:border-amber-200/30 text-lg font-bold px-4 py-2 rounded cursor-pointer shadow-md/30 transition-all duration-200">+ Add</button>
+        <button className="bg-neutral-600/20 border border-neutral-100/20 hover:bg-amber-200/10 hover:border-amber-200/30 text-lg font-bold px-4 py-2 rounded cursor-pointer shadow-md/30 transition-all duration-200" onClick={() => addItemToKit(item)}>+ Add</button>
       </div>
     </div>
   );

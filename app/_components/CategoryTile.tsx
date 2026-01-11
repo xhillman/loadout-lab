@@ -1,3 +1,5 @@
+import { AllIcon, FireIcon, FoodIcon, MedicalIcon, ShelterIcon, ToolsIcon, WaterIcon } from "./Icons";
+
 type CategoryTileProps = {
   category: string;
   selectedCategory: string | null;
@@ -10,6 +12,16 @@ export default function CategoryTile({
   onSelect,
 }: CategoryTileProps) {
   const isSelected = selectedCategory === category;
+
+  const icon = {
+    "Water": <WaterIcon />,
+    "Fire": <FireIcon />,
+    "Food": <FoodIcon />,
+    "Shelter": <ShelterIcon />,
+    "Medical": <MedicalIcon />,
+    "Tools": <ToolsIcon />,
+    "All": <AllIcon />,
+  }[category];
 
   return (
     <li
@@ -25,7 +37,7 @@ export default function CategoryTile({
           isSelected ? "bg-amber-200/10" : "bg-neutral-950/20"
         } rounded flex items-center justify-between py-2 px-4 `}
       >
-        <h2 className="text-xl font-bold flex items-center ">{category}</h2>
+        <h2 className="text-xl font-bold flex items-center gap-3">{icon} {category}</h2>
         <div className="h-4 w-4 rounded-full bg-red-500/90"></div>
       </div>
     </li>
