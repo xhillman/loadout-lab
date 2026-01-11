@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 import Header from "./_components/Header";
 import CategoryRail from "./_components/CategoryRail";
@@ -34,11 +34,16 @@ export default function Home() {
   });
 
   const addItemToKit = (item: Item) => {
+    console.log(item);
     setCurrentKit((prevKit) => ({
       ...prevKit,
       items: [...prevKit.items, item],
     }));
   }
+
+  useEffect(() => {
+    console.log(currentKit);
+  }, [currentKit]);
 
   return (
     <div className="app font-rajdhani">
@@ -49,7 +54,7 @@ export default function Home() {
           <CategoryRail selectedCategory={selectedCategory} onSelectCategory={(category) => setSelectedCategory(category)}/>
         </div>
         <div className="col-span-7 h-full bg-transparent">
-          <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay} addItemToKit={addItemToKit} />
+          <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay} addItemToKit={addItemToKit} currentKit={currentKit} />
         </div>
         <div className="col-span-3 h-full bg-transparent p-4 shadow-xl/60">
           <StatsRail currentKit={currentKit} />
