@@ -3,12 +3,12 @@ import SaveKitButton from "./SaveKitButton";
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center p-4 bg-transparent">
-      <h1 className="text-3xl font-bold">Loadout Lab</h1>
+    <header className="flex justify-between items-center p-4 bg-surface-2/60">
+      <h1 className="text-3xl font-bold text-text-primary tracking-wide">Loadout Lab</h1>
       <div className="flex flex-col items-center">
-        <h2 className="text-3xl font-bold">72 Hour Urban Survival Kit</h2>
+        <h2 className="text-3xl font-bold text-text-primary">72 Hour Urban Survival Kit</h2>
       </div>
-      <div className="action-buttons flex gap-6">
+      <div className="action-buttons flex gap-4">
         <SaveKitButton />
         <LoadKitButton />
       </div>

@@ -19,7 +19,9 @@ export default function CategoryRail({ selectedCategory, onSelectCategory, curre
           <CategoryTile key={category.name} category={category} selectedCategory={selectedCategory} onSelect={onSelectCategory} currentKit={currentKit} />
         ))}
       </ul>
-      <button className="gear-list-button w-full mb-2 border border-neutral-100/10 rounded flex items-center justify-between py-2 px-4 cursor-pointer hover:border-neutral-600 transition-all duration-200 text-xl font-bold">Gear List</button>
+      <button className="gear-list-button w-full mb-2 bg-card-base border border-border-soft rounded-lg flex items-center justify-between py-3 px-4 cursor-pointer hover:bg-card-hover hover:border-border-base shadow-card transition-all duration-200 ease-smooth text-xl font-bold text-text-primary">
+        Gear List
+      </button>
     </div>
   );
 }

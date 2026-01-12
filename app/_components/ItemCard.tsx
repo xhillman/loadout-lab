@@ -16,19 +16,25 @@ export default function ItemCard({
   );
 
   return (
-    <div className={`item-card p-2 border ${isItemInKit ? "border-amber-200/30 inset-shadow-sm inset-shadow-amber-400/20" : "border-neutral-100/10 hover:border-amber-200/20"} shadow-lg/50 rounded flex flex-col justify-between min-h-[180px] hover:scale-103 transition-all duration-200`}>
+    <div className={`item-card p-4 rounded-lg flex flex-col justify-between min-h-[180px] transition-all duration-200 ease-smooth ${
+      isItemInKit 
+        ? "card-active" 
+        : "card-interactive hover:scale-[1.02]"
+    }`}>
       <div>
-        <h3 className="text-lg font-bold">{item.name}</h3>
-        <p className="text-sm text-blue-100/90 bg-blue-500/30 border border-blue-500/20 w-fit rounded px-2 py-1">
+        <h3 className="text-lg font-bold text-text-primary mb-2">{item.name}</h3>
+        <p className="text-xs text-accent-green bg-accent-green/10 border border-accent-green/20 w-fit rounded-full px-3 py-1 font-medium">
           {item.weight_oz} oz
         </p>
       </div>
-      <div className="item-card-footer flex justify-between items-end">
-        <p className="text-lg font-bold">${item.price_usd}</p>
+      <div className="item-card-footer flex justify-between items-end mt-4">
+        <p className="text-xl font-bold text-text-primary">${item.price_usd}</p>
         <button
-          className={`border ${
-            isItemInKit ? " border-red-500/20 bg-red-500/10 hover:border-red-500/30 hover:bg-red-500/20" : " bg-green-600/10  border-green-600/20 hover:border-green-600/30 hover:bg-green-600/20"
-          }   text-lg font-bold px-4 py-2 rounded cursor-pointer shadow-md/30 transition-all duration-200`}
+          className={`text-sm font-bold px-4 py-2 rounded-lg cursor-pointer transition-all duration-200 ease-smooth ${
+            isItemInKit 
+              ? "bg-accent-red/15 border border-accent-red/30 text-accent-red hover:bg-accent-red/25 hover:border-accent-red/50" 
+              : "bg-accent-green/15 border border-accent-green/30 text-accent-green hover:bg-accent-green/25 hover:border-accent-green/50"
+          }`}
           onClick={() => toggleItemInKit(item)}
         >
           {isItemInKit ? "Remove" : "+ Add"}

@@ -11,7 +11,7 @@ type StatsRailProps = {
 
 export default function StatsRail({ currentKit, categoryList }: StatsRailProps) {
   return (
-    <div className="stats-rail h-full flex flex-col gap-4 bg-transparent">
+    <div className="stats-rail h-full flex flex-col gap-5">
       <StatsPanel currentKit={currentKit} />
       <CoveragePanel categoryList={categoryList} currentKit={currentKit}/>
       <WarningPanel />

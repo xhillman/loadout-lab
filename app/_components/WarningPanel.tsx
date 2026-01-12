@@ -1,8 +1,8 @@
 export default function WarningPanel() {
   return (
-    <div className="warning-panel bg-neutral-950/20 p-4 border border-neutral-100/10 rounded shadow-lg/50">
-      <h2 className="text-xl font-bold mb-4 border-b border-neutral-100/10 pb-2">CRITICAL WARNINGS</h2>
-      <p>Add items to see coverage analysis</p>
+    <div className="warning-panel panel rounded-lg p-4">
+      <h2 className="text-xl font-bold mb-4 border-b border-border-base pb-2 text-text-primary tracking-wide">CRITICAL WARNINGS</h2>
+      <p className="text-text-muted text-sm">Add items to see coverage analysis</p>
     </div>
   );
 }

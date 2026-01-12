@@ -9,7 +9,7 @@ export default function useCategoryCoverage(
     .filter(item => item.category === category.name.toLowerCase())
     .reduce((sum, item) => sum + item.coverage_contribution, 0);
   
-  const actualPercentage = (current / threshold) * 100;
+  const actualPercentage = Number(((current / threshold) * 100).toFixed(2));
   const visiblePercentage = Math.min(actualPercentage, 100);
   const color = actualPercentage <= 30 ? 'red' : actualPercentage <= 70 ? 'yellow' : 'green';
   

@@ -17,7 +17,7 @@ const categoryList: Category[] = categories.categories as Category[];
 
 export default function Home() {
 
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>("All");
   const itemsToDisplay = useMemo(() => {
     if (!selectedCategory || selectedCategory === "All") {
       return itemList;
@@ -47,17 +47,17 @@ export default function Home() {
   }, [currentKit]);
 
   return (
-    <div className="app font-rajdhani">
+    <div className="app font-rajdhani text-text-primary">
       <Header />
       <SettingsBar />
       <main className="grid grid-cols-12 min-h-[calc(100vh-110px)]">
-        <div className="col-span-2 h-full bg-transparent p-4 shadow-xl/60">
+        <div className="col-span-2 h-full bg-surface-1/50 border-r border-border-soft p-4 shadow-panel">
           <CategoryRail selectedCategory={selectedCategory} onSelectCategory={(category) => setSelectedCategory(category)} currentKit={currentKit}/>
         </div>
-        <div className="col-span-7 h-full bg-transparent">
+        <div className="col-span-7 h-full bg-bg-base/30">
           <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay} toggleItemInKit={toggleItemInKit} currentKit={currentKit} />
         </div>
-        <div className="col-span-3 h-full bg-transparent p-4 shadow-xl/60">
+        <div className="col-span-3 h-full bg-surface-1/50 border-l border-border-soft p-4 shadow-panel">
           <StatsRail currentKit={currentKit} categoryList={categoryList} />
         </div>
       </main>

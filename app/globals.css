@@ -1,29 +1,185 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Fonts */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-grotesk: var(--font-grotesk);
-  --font-satoshi: var(--font-satoshi);
   --font-rajdhani: var(--font-rajdhani);
+
+  /*  Background Colors */
+  --color-bg-deep: #08090A;     /* nearly pure black */
+  --color-bg-base: #0D0E0F;     /* very dark gray */
+
+  /*  Surface Colors */
+  --color-surface-1: #141516;   /* primary surface (panels) */
+  --color-surface-2: #1A1B1C;   /* elevated surface (sub-panels / headers) */
+
+  /*  Card Colors */
+  --color-card-base: #1E1F20;   /* default card fill */
+  --color-card-hover: #252627;  /* slightly brighter on hover */
+  --color-card-active: #2C2D2F; /* active/selected card */
+
+  /*  Border Colors */
+  --color-border-soft: rgb(230 237 245 / 0.08);
+  --color-border-base: rgb(230 237 245 / 0.12);
+  --color-border-strong: rgb(230 237 245 / 0.18);
+
+  /*  Text Colors */
+  --color-text-primary: #E6EDF5;
+  --color-text-secondary: #A3B1C2;  /* bump contrast vs old dim text */
+  --color-text-tertiary: #8896A6;
+  --color-text-muted: rgb(230 237 245 / 0.55);
+
+  /*  Accent Colors */
+  --color-accent-amber: #F6AD55;
+  --color-accent-green: #9AE6B4;
+  --color-accent-red: #FC8181;
+
+  /*  Box Shadows */
+  /* Calm default shadow for panels/cards */
+  --shadow-panel: 0 10px 30px rgb(0 0 0 / 0.35);
+  --shadow-card: 0 6px 18px rgb(0 0 0 / 0.35);
+
+  /* Hover lift */
+  --shadow-lift: 0 14px 40px rgb(0 0 0 / 0.55);
+
+  /* Subtle inset edge definition (premium feel) */
+  --shadow-inset-soft: inset 0 1px 0 rgb(255 255 255 / 0.03);
+
+  /*  Transition Timing */
+  --ease-smooth: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* Source hints for dynamic class generation */
+@source inline("{bg-bg-deep,bg-bg-base,bg-surface-1,bg-surface-2}");
+@source inline("{bg-card-base,bg-card-hover,bg-card-active}");
+@source inline("{border-border-soft,border-border-base,border-border-strong}");
+@source inline("{text-text-primary,text-text-secondary,text-text-tertiary,text-text-muted}");
+@source inline("{text-accent-amber,text-accent-green,text-accent-red}");
+@source inline("{bg-accent-amber,bg-accent-green,bg-accent-red}");
+@source inline("{bg-accent-amber/10,bg-accent-amber/15,bg-accent-amber/25}");
+@source inline("{bg-accent-green/10,bg-accent-green/15,bg-accent-green/25}");
+@source inline("{bg-accent-red/10,bg-accent-red/15,bg-accent-red/25}");
+@source inline("{border-accent-amber/20,border-accent-amber/30,border-accent-amber/50}");
+@source inline("{border-accent-green/20,border-accent-green/30,border-accent-green/50}");
+@source inline("{border-accent-red/20,border-accent-red/30,border-accent-red/50}");
+@source inline("{shadow-panel,shadow-card,shadow-lift,shadow-inset-soft}");
+@source inline("{ease-smooth}");
+/* Dynamic coverage indicator colors */
+@source inline("{bg-red-600/50,bg-yellow-600/50,bg-green-600/50}");
+@source inline("{ring-red-600/20,ring-yellow-600/20,ring-green-600/20}");
+
+  /* Base Styles */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-bg-deep);
+  color: var(--color-text-primary);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Component Utility Classes */
+
+/* Card - Default hoverable */
+.card-interactive {
+  @apply bg-card-base border border-border-soft shadow-card;
+  box-shadow: 
+    var(--shadow-card),
+    var(--shadow-inset-soft);
+  transition: background-color 200ms var(--ease-smooth),
+              border-color 200ms var(--ease-smooth),
+              box-shadow 200ms var(--ease-smooth),
+              transform 200ms var(--ease-smooth);
+  position: relative;
+}
+
+.card-interactive:hover {
+  @apply bg-card-hover border-border-base;
+  box-shadow: 
+    0 14px 40px rgb(0 0 0 / 0.55),
+    var(--shadow-inset-soft);
+  z-index: 1;
+}
+
+/* Card - Active/Selected state */
+.card-active {
+  @apply bg-card-active border border-border-strong;
+  box-shadow: 
+    0 18px 50px rgb(0 0 0 / 0.60),
+    inset 0 1px 0 rgb(255 255 255 / 0.05);
+  position: relative;
+  z-index: 1;
+}
+
+/* Panel - Default surface */
+.panel {
+  @apply bg-surface-1 border border-border-soft shadow-panel;
+}
+
+/* Panel - Elevated surface */
+.panel-elevated {
+  @apply bg-surface-2 border border-border-soft shadow-panel;
+}
+
+/* Button - Primary */
+.btn-primary {
+  box-shadow: 0 10px 25px rgb(0 0 0 / 0.45);
+  transition: all 200ms var(--ease-smooth);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 14px 35px rgb(0 0 0 / 0.60);
+}
+
+/* Subtle hover lift for any element */
+.hover-lift {
+  transition: all 200ms var(--ease-smooth);
+}
+
+.hover-lift:hover {
+  @apply shadow-lift;
+  transform: translateY(-2px);
+}
+
+/* Custom Scrollbar */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-base) transparent;
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-base);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-strong);
+}
+
+/* Input Focus Ring */
+
+input:focus {
+  box-shadow: 0 0 0 2px rgb(246 173 85 / 0.15);
+}
+
+/* Hide number input spinners */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }

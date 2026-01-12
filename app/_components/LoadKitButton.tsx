@@ -1,5 +1,7 @@
 export default function LoadKitButton() {
   return (
-    <button className="load-kit-button bg-neutral-600/20 border border-neutral-100/20 hover:bg-amber-200/10 hover:border-amber-200/30 text-lg font-bold px-4 py-2 rounded cursor-pointer shadow-md/30 transition-all duration-200">Load Kit</button>
+    <button className="load-kit-button bg-accent-amber/15 border border-accent-amber/30 hover:bg-accent-amber/25 hover:border-accent-amber/50 text-base font-bold px-5 py-2 rounded-lg cursor-pointer shadow-card btn-primary text-accent-amber transition-all duration-200 ease-smooth">
+      Load Kit
+    </button>
   );
 }
