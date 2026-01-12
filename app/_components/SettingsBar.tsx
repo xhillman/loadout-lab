@@ -1,4 +1,11 @@
-export default function SettingsBar() {
+type SettingsBarProps = {
+  budget: number;
+  maxWeight: number;
+  onBudgetChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onMaxWeightChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+export default function SettingsBar({ budget, maxWeight, onBudgetChange, onMaxWeightChange }: SettingsBarProps) {
   return (
     <div className="settings-bar flex items-center justify-center gap-6 py-3 bg-surface-1/40 border-b border-border-soft">
       
@@ -8,7 +15,8 @@ export default function SettingsBar() {
           <span className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted">$</span>
           <input 
             type="number" 
-            defaultValue={300} 
+            value={budget} 
+            onChange={onBudgetChange}
             id="budget" 
             className="w-20 pl-7 pr-2 py-1.5 bg-card-base border border-border-soft rounded-lg text-text-primary text-lg focus:border-border-strong focus:outline-none transition-colors" 
           />
@@ -20,11 +28,12 @@ export default function SettingsBar() {
         <div className="relative">
           <input 
             type="number" 
-            defaultValue={25} 
+            value={maxWeight} 
+            onChange={onMaxWeightChange}
             id="weight" 
-            className="w-16 px-3 py-1.5 bg-card-base border border-border-soft rounded-lg text-text-primary text-lg focus:border-border-strong focus:outline-none transition-colors" 
+            className="w-20 px-3 py-1.5 bg-card-base border border-border-soft rounded-lg text-text-primary text-lg focus:border-border-strong focus:outline-none transition-colors" 
           />
-          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted">lbs</span>
+          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted">oz</span>
         </div>
       </div>
     </div>

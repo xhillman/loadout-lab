@@ -26,14 +26,24 @@ export default function Home() {
       item.category.toLowerCase() === selectedCategory.toLowerCase());
   }, [selectedCategory]);
 
+  const [budget, setBudget] = useState(300);
+  const [maxWeight, setMaxWeight] = useState(400);
+
   const [currentKit, setCurrentKit] = useState<Omit<Kit, 'id' | 'created_at' | 'updated_at'>>({
     name: "Untitled Kit",
     items: [],
     constraints: {
-      max_weight_oz: 400,
-      max_budget_usd: 300,
+      max_weight_oz: maxWeight,
+      max_budget_usd: budget,
     },
   });
+
+  const handleBudgetChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setBudget(Number(event.target.value));
+  }
+  const handleMaxWeightChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setMaxWeight(Number(event.target.value));
+  }
 
   const toggleItemInKit = (item: Item) => {
     setCurrentKit((prevKit) => ({
@@ -49,7 +59,7 @@ export default function Home() {
   return (
     <div className="app font-rajdhani text-text-primary">
       <Header />
-      <SettingsBar />
+      <SettingsBar budget={budget} maxWeight={maxWeight} onBudgetChange={handleBudgetChange} onMaxWeightChange={handleMaxWeightChange} />
       <main className="grid grid-cols-12 min-h-[calc(100vh-110px)]">
         <div className="col-span-2 h-full bg-surface-1/50 border-r border-border-soft p-4 shadow-panel">
           <CategoryRail selectedCategory={selectedCategory} onSelectCategory={(category) => setSelectedCategory(category)} currentKit={currentKit}/>
@@ -58,7 +68,7 @@ export default function Home() {
           <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay} toggleItemInKit={toggleItemInKit} currentKit={currentKit} />
         </div>
         <div className="col-span-3 h-full bg-surface-1/50 border-l border-border-soft p-4 shadow-panel">
-          <StatsRail currentKit={currentKit} categoryList={categoryList} />
+          <StatsRail currentKit={currentKit} categoryList={categoryList} budget={budget} maxWeight={maxWeight} />
         </div>
       </main>
     </div>
