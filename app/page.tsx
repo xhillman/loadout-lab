@@ -69,13 +69,13 @@ export default function Home() {
   }
 
   const toggleItemInKit = (item: Item) => {
+    const isItemInKit = kit.items.some((kitItem) => kitItem.id === item.id);
     const newKit = {
       ...kit,
-      items: kit.items.includes(item) ? kit.items.filter((kitItem) => kitItem.id !== item.id) : [...kit.items, item],
+      items: isItemInKit ? kit.items.filter((kitItem) => kitItem.id !== item.id) : [...kit.items, item],
     }
     setKit(newKit);
     setCurrentKit(newKit);
-    
   }
 
   useEffect(() => {
