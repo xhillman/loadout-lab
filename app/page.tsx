@@ -2,6 +2,8 @@
 
 import { useState, useMemo, useEffect } from "react";
 
+import useKitStore from "./_hooks/useKitStore";
+
 import Header from "./_components/Header";
 import CategoryRail from "./_components/CategoryRail";
 import ItemBrowser from "./_components/ItemBrowser";
@@ -17,6 +19,8 @@ const categoryList: Category[] = categories.categories as Category[];
 
 export default function Home() {
 
+  const { getCurrentKit, setCurrentKit } = useKitStore();
+
   const [selectedCategory, setSelectedCategory] = useState<string | null>("All");
   const itemsToDisplay = useMemo(() => {
     if (!selectedCategory || selectedCategory === "All") {
@@ -29,32 +33,54 @@ export default function Home() {
   const [budget, setBudget] = useState(300);
   const [maxWeight, setMaxWeight] = useState(400);
 
-  const [currentKit, setCurrentKit] = useState<Omit<Kit, 'id' | 'created_at' | 'updated_at'>>({
-    name: "Untitled Kit",
-    items: [],
+  const currentKit = getCurrentKit();
+
+  const [kit, setKit] = useState<Kit>({
+    id: currentKit?.id || "",
+    name: currentKit?.name || "Untitled Kit",
+    created_at: currentKit?.created_at || new Date().toISOString(),
+    updated_at: currentKit?.updated_at || new Date().toISOString(),
+    items: currentKit?.items || [],
     constraints: {
-      max_weight_oz: maxWeight,
-      max_budget_usd: budget,
+      max_weight_oz: currentKit?.constraints.max_weight_oz || maxWeight,
+      max_budget_usd: currentKit?.constraints.max_budget_usd || budget,
     },
   });
 
   const handleBudgetChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setBudget(Number(event.target.value));
+    setKit((prevKit) => ({
+      ...prevKit,
+      constraints: {
+        ...prevKit.constraints,
+        max_budget_usd: Number(event.target.value),
+      },
+    }));
   }
   const handleMaxWeightChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMaxWeight(Number(event.target.value));
-  }
-
-  const toggleItemInKit = (item: Item) => {
-    setCurrentKit((prevKit) => ({
+    setKit((prevKit) => ({
       ...prevKit,
-      items: prevKit.items.includes(item) ? prevKit.items.filter((kitItem) => kitItem.id !== item.id) : [...prevKit.items, item],
+      constraints: {
+        ...prevKit.constraints,
+        max_weight_oz: Number(event.target.value),
+      },
     }));
   }
 
+  const toggleItemInKit = (item: Item) => {
+    const newKit = {
+      ...kit,
+      items: kit.items.includes(item) ? kit.items.filter((kitItem) => kitItem.id !== item.id) : [...kit.items, item],
+    }
+    setKit(newKit);
+    setCurrentKit(newKit);
+    
+  }
+
   useEffect(() => {
-    console.log(currentKit);
-  }, [currentKit]);
+    console.log(kit);
+  }, [kit]);
 
   return (
     <div className="app font-rajdhani text-text-primary">
@@ -62,13 +88,13 @@ export default function Home() {
       <SettingsBar budget={budget} maxWeight={maxWeight} onBudgetChange={handleBudgetChange} onMaxWeightChange={handleMaxWeightChange} />
       <main className="grid grid-cols-12 min-h-[calc(100vh-110px)]">
         <div className="col-span-2 h-full bg-surface-1/50 border-r border-border-soft p-4 shadow-panel">
-          <CategoryRail selectedCategory={selectedCategory} onSelectCategory={(category) => setSelectedCategory(category)} currentKit={currentKit}/>
+          <CategoryRail selectedCategory={selectedCategory} onSelectCategory={(category) => setSelectedCategory(category)} currentKit={kit}/>
         </div>
         <div className="col-span-7 h-full bg-bg-base/30">
-          <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay} toggleItemInKit={toggleItemInKit} currentKit={currentKit} />
+          <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay} toggleItemInKit={toggleItemInKit} currentKit={kit} />
         </div>
         <div className="col-span-3 h-full bg-surface-1/50 border-l border-border-soft p-4 shadow-panel">
-          <StatsRail currentKit={currentKit} categoryList={categoryList} budget={budget} maxWeight={maxWeight} />
+          <StatsRail currentKit={kit} categoryList={categoryList} budget={budget} maxWeight={maxWeight} />
         </div>
       </main>
     </div>
