@@ -21,7 +21,7 @@ const categoryList: Category[] = categories.categories as Category[];
 
 export default function Home() {
 
-  const { getCurrentKit, setCurrentKit, getSavedKits, saveKit } = useKitStore();
+  const { getCurrentKit, setCurrentKit, getSavedKits, saveKit, deleteKit, renameKit } = useKitStore();
 
   const [isDirty, setIsDirty] = useState(false);
 
@@ -99,6 +99,16 @@ const handleLoadKit = () => {
     setIsLoadKitModalOpen(false);
   }
 
+  const handleDeleteKit = (kitId: string) => {
+    deleteKit(kitId);
+    setSavedKits(getSavedKits());
+  }
+
+  const handleRenameKit = (kitId: string, newName: string) => {
+    renameKit(kitId, newName);
+    setSavedKits(getSavedKits());
+  }
+
   const handleBudgetChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setBudget(Number(event.target.value));
     setKit((prevKit) => ({
@@ -156,6 +166,8 @@ const handleLoadKit = () => {
         savedKits={savedKits}
         isDirty={isDirty}
         onSaveAndLoad={handleSaveAndLoad}
+        onDeleteKit={handleDeleteKit}
+        onRenameKit={handleRenameKit}
       />
     </div>
   );

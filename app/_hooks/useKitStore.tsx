@@ -41,6 +41,16 @@ export default function useKitStore() {
     localStorage.setItem("ll-savedKits", JSON.stringify(filteredKits));
   }
 
+  const renameKit = (kitId: string, newName: string) => {
+    const savedKits = getSavedKits();
+    const updatedKits = savedKits.map((kit: Kit) => 
+      kit.id === kitId 
+        ? { ...kit, name: newName, updated_at: new Date().toISOString() } 
+        : kit
+    );
+    localStorage.setItem("ll-savedKits", JSON.stringify(updatedKits));
+  }
+
   const loadKit = (kitId: string) => {
     const savedKits = getSavedKits();
     const kit = savedKits.find((kit: Kit) => kit.id === kitId);
@@ -57,6 +67,7 @@ export default function useKitStore() {
     getSavedKits,
     saveKit,
     deleteKit,
+    renameKit,
     loadKit,
   }
 }
