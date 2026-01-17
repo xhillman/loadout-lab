@@ -148,7 +148,7 @@ const handleLoadKit = () => {
           <StatsRail currentKit={kit} categoryList={categoryList} budget={budget} maxWeight={maxWeight} />
         </div>
       </main>
-      <SaveKitModal isOpen={isSaveKitModalOpen} closeModal={handleSaveKitClick} kit={kit} />
+      <SaveKitModal isOpen={isSaveKitModalOpen} closeModal={handleSaveKitClick} kit={kit} onSaveComplete={() => setIsDirty(false)} />
       <LoadKitModal 
         isOpen={isLoadKitModalOpen} 
         closeModal={handleLoadKitClick} 
