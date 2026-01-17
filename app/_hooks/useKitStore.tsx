@@ -1,6 +1,7 @@
 import { Kit } from "../_types";
 
 export default function useKitStore() {
+
   const getCurrentKit = () => {
     const currentKit = sessionStorage.getItem("ll-currentKit");
     if (currentKit) {
@@ -14,35 +15,36 @@ export default function useKitStore() {
   }
 
   const getSavedKits = () => {
-    return localStorage.getItem("ll-savedKits");
+    const savedKits = localStorage.getItem("ll-savedKits");
+    if (savedKits) {
+      return JSON.parse(savedKits);
+    }
+    return [];
   }
 
-  const saveKit = (kit: Kit) => {
+  const saveKit = (kit: Kit, name: string) => {
+    const kitToSave = {
+      ...kit,
+      id: crypto.randomUUID(),
+      name: name,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    };
     const savedKits = getSavedKits();
-    if (savedKits) {
-      const savedKitsArray = JSON.parse(savedKits);
-      savedKitsArray.push(kit);
-      localStorage.setItem("ll-savedKits", JSON.stringify(savedKitsArray));
-    } else {
-      localStorage.setItem("ll-savedKits", JSON.stringify([kit]));
-    }
-    localStorage.setItem("ll-savedKits", JSON.stringify(kit));
+    savedKits.push(kitToSave);
+    localStorage.setItem("ll-savedKits", JSON.stringify(savedKits));
   }
 
   const deleteKit = (kitId: string) => {
     const savedKits = getSavedKits();
-    if (savedKits) {
-      const savedKitsArray = JSON.parse(savedKits);
-      const filteredKits = savedKitsArray.filter((kit: Kit) => kit.id !== kitId);
-      localStorage.setItem("ll-savedKits", JSON.stringify(filteredKits));
-    }
+    const filteredKits = savedKits.filter((kit: Kit) => kit.id !== kitId);
+    localStorage.setItem("ll-savedKits", JSON.stringify(filteredKits));
   }
 
   const loadKit = (kitId: string) => {
     const savedKits = getSavedKits();
-    if (savedKits) {
-      const savedKitsArray = JSON.parse(savedKits);
-      const kit = savedKitsArray.find((kit: Kit) => kit.id === kitId);
+    const kit = savedKits.find((kit: Kit) => kit.id === kitId);
+    if (kit) {
       setCurrentKit(kit);
       return kit;
     }

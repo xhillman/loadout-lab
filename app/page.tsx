@@ -9,6 +9,8 @@ import CategoryRail from "./_components/CategoryRail";
 import ItemBrowser from "./_components/ItemBrowser";
 import StatsRail from "./_components/StatsRail";
 import SettingsBar from "./_components/SettingsBar";
+import SaveKitModal from "./_components/SaveKitModal";
+import LoadKitModal from "./_components/LoadKitModal";
 
 import items from "./_data/items.json";
 import categories from "./_data/categories.json";
@@ -19,7 +21,10 @@ const categoryList: Category[] = categories.categories as Category[];
 
 export default function Home() {
 
-  const { getCurrentKit, setCurrentKit } = useKitStore();
+  const { getCurrentKit, setCurrentKit, getSavedKits, saveKit } = useKitStore();
+
+  const [isDirty, setIsDirty] = useState(false);
+
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>("All");
   const itemsToDisplay = useMemo(() => {
@@ -33,19 +38,66 @@ export default function Home() {
   const [budget, setBudget] = useState(300);
   const [maxWeight, setMaxWeight] = useState(400);
 
-  const currentKit = getCurrentKit();
-
   const [kit, setKit] = useState<Kit>({
-    id: currentKit?.id || "",
-    name: currentKit?.name || "Untitled Kit",
-    created_at: currentKit?.created_at || new Date().toISOString(),
-    updated_at: currentKit?.updated_at || new Date().toISOString(),
-    items: currentKit?.items || [],
+    id: "",
+    name: "Untitled Kit",
+    created_at: "",
+    updated_at: "",
+    items: [],
     constraints: {
-      max_weight_oz: currentKit?.constraints.max_weight_oz || maxWeight,
-      max_budget_usd: currentKit?.constraints.max_budget_usd || budget,
+      max_weight_oz: maxWeight,
+      max_budget_usd: budget,
     },
   });
+
+  useEffect(() => {
+    const currentKit = getCurrentKit();
+    if (currentKit) {
+      setKit(currentKit);
+    } else {
+      setKit(prev => ({
+        ...prev,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      }));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const [isSaveKitModalOpen, setIsSaveKitModalOpen] = useState(false);
+
+  const handleSaveKitClick = () => {
+    setIsSaveKitModalOpen(!isSaveKitModalOpen);
+  }
+
+  const [isLoadKitModalOpen, setIsLoadKitModalOpen] = useState(false);
+  const [savedKits, setSavedKits] = useState<Kit[]>([]);
+  
+
+const handleLoadKit = () => {
+  const savedKits = getSavedKits();
+  setSavedKits(savedKits);
+}
+
+  const handleLoadKitClick = () => {
+    setIsLoadKitModalOpen(!isLoadKitModalOpen);
+    handleLoadKit();
+  }
+
+  const handleSetCurrentKit = (loadedKit: Kit) => {
+    setKit(loadedKit);
+    setCurrentKit(loadedKit);
+    setIsDirty(false);
+    setIsLoadKitModalOpen(false);
+  }
+
+  const handleSaveAndLoad = (kitToLoad: Kit, saveName: string) => {
+    saveKit(kit, saveName);
+    setKit(kitToLoad);
+    setCurrentKit(kitToLoad);
+    setIsDirty(false);
+    setIsLoadKitModalOpen(false);
+  }
 
   const handleBudgetChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setBudget(Number(event.target.value));
@@ -56,6 +108,7 @@ export default function Home() {
         max_budget_usd: Number(event.target.value),
       },
     }));
+    setIsDirty(true);
   }
   const handleMaxWeightChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMaxWeight(Number(event.target.value));
@@ -66,6 +119,7 @@ export default function Home() {
         max_weight_oz: Number(event.target.value),
       },
     }));
+    setIsDirty(true);
   }
 
   const toggleItemInKit = (item: Item) => {
@@ -76,15 +130,12 @@ export default function Home() {
     }
     setKit(newKit);
     setCurrentKit(newKit);
+    setIsDirty(true);
   }
-
-  useEffect(() => {
-    console.log(kit);
-  }, [kit]);
 
   return (
     <div className="app font-rajdhani text-text-primary">
-      <Header />
+      <Header onSaveKitClick={handleSaveKitClick} onLoadKitClick={handleLoadKitClick} />
       <SettingsBar budget={budget} maxWeight={maxWeight} onBudgetChange={handleBudgetChange} onMaxWeightChange={handleMaxWeightChange} />
       <main className="grid grid-cols-12 min-h-[calc(100vh-110px)]">
         <div className="col-span-2 h-full bg-surface-1/50 border-r border-border-soft p-4 shadow-panel">
@@ -97,6 +148,15 @@ export default function Home() {
           <StatsRail currentKit={kit} categoryList={categoryList} budget={budget} maxWeight={maxWeight} />
         </div>
       </main>
+      <SaveKitModal isOpen={isSaveKitModalOpen} closeModal={handleSaveKitClick} kit={kit} />
+      <LoadKitModal 
+        isOpen={isLoadKitModalOpen} 
+        closeModal={handleLoadKitClick} 
+        setCurrentKit={handleSetCurrentKit} 
+        savedKits={savedKits}
+        isDirty={isDirty}
+        onSaveAndLoad={handleSaveAndLoad}
+      />
     </div>
   );
 }
