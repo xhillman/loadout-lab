@@ -1,18 +1,11 @@
 {
   "categories": [
-    {"name": "All", 
-    "coverage": 0},
-    {"name": "Water", 
-    "coverage": 20},
-    {"name": "Fire", 
-    "coverage": 20},
-    {"name": "Shelter", 
-    "coverage": 20},
-    {"name": "Food", 
-    "coverage": 20},
-    {"name": "Medical", 
-    "coverage": 20},
-    {"name": "Tools", 
-    "coverage": 20}
+    {"name": "All", "coverage": 0},
+    {"name": "Water", "coverage": 28},
+    {"name": "Fire", "coverage": 22},
+    {"name": "Shelter", "coverage": 32},
+    {"name": "Food", "coverage": 22},
+    {"name": "Medical", "coverage": 22},
+    {"name": "Tools", "coverage": 35}
   ]
 }

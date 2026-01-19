@@ -9,6 +9,17 @@ export type Item = {
   essential: boolean;
   image_url: string;
   tags: string[];
+  provides: string[];
+  requires: string[];
+  redundancy_group: string | null;
+};
+
+export type Warning = {
+  id: string;
+  type: 'missing_dependency' | 'no_redundancy' | 'low_coverage';
+  severity: 'critical' | 'warning' | 'info';
+  category: string;
+  message: string;
 };
 
 export type Kit = {

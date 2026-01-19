@@ -1,243 +1,1545 @@
-[
-  {
-    "id": "water-001",
-    "name": "LifeStraw Personal Filter",
-    "category": "water",
-    "weight_oz": 2.0,
-    "price_usd": 19.95,
-    "description": "Compact personal water filter that removes 99.9999% of waterborne bacteria and parasites. Filters up to 1,000 gallons.",
-    "coverage_contribution": 15,
-    "essential": true,
-    "image_url": "/images/lifestraw.jpg",
-    "tags": ["filtration", "lightweight", "portable"]
-  },
-  {
-    "id": "water-002",
-    "name": "Nalgene Wide-Mouth 32oz",
-    "category": "water",
-    "weight_oz": 6.2,
-    "price_usd": 14.00,
-    "description": "Durable BPA-free water bottle with measurement markings. Withstands temperatures from -40°F to 212°F.",
-    "coverage_contribution": 8,
-    "essential": true,
-    "image_url": "/images/nalgene.jpg",
-    "tags": ["storage", "durable", "freezable"]
-  },
-  {
-    "id": "water-003",
-    "name": "Aquatabs Purification Tablets",
-    "category": "water",
-    "weight_oz": 0.5,
-    "price_usd": 8.99,
-    "description": "50-pack of water purification tablets. Each tablet treats 1 liter of water in 30 minutes.",
-    "coverage_contribution": 10,
-    "essential": false,
-    "image_url": "/images/aquatabs.jpg",
-    "tags": ["purification", "chemical", "backup"]
-  },
-  {
-    "id": "fire-001",
-    "name": "Ferro Rod Fire Starter",
-    "category": "fire",
-    "weight_oz": 1.8,
-    "price_usd": 12.99,
-    "description": "6-inch ferrocerium rod with striker. Produces 5,500°F sparks, works in any weather. Lasts 12,000+ strikes.",
-    "coverage_contribution": 12,
-    "essential": true,
-    "image_url": "/images/ferrorod.jpg",
-    "tags": ["reliable", "all-weather", "long-lasting"]
-  },
-  {
-    "id": "fire-002",
-    "name": "UCO Stormproof Matches",
-    "category": "fire",
-    "weight_oz": 1.2,
-    "price_usd": 7.49,
-    "description": "25 windproof and waterproof matches that burn for 15 seconds each. Includes strikers and carrying case.",
-    "coverage_contribution": 8,
-    "essential": false,
-    "image_url": "/images/stormmatches.jpg",
-    "tags": ["waterproof", "windproof", "backup"]
-  },
-  {
-    "id": "fire-003",
-    "name": "Bic Mini Lighter 3-Pack",
-    "category": "fire",
-    "weight_oz": 1.5,
-    "price_usd": 5.99,
-    "description": "Three reliable mini lighters. Each provides approximately 1,500 lights. Classic, proven fire source.",
-    "coverage_contribution": 6,
-    "essential": false,
-    "image_url": "/images/biclighter.jpg",
-    "tags": ["convenient", "cheap", "disposable"]
-  },
-  {
-    "id": "shelter-001",
-    "name": "Sea to Summit Ultra-Sil Tarp",
-    "category": "shelter",
-    "weight_oz": 11.0,
-    "price_usd": 89.95,
-    "description": "Ultra-lightweight 10x10ft silnylon tarp with 8 tie-out points. Packs down to the size of a soda can.",
-    "coverage_contribution": 18,
-    "essential": true,
-    "image_url": "/images/tarp.jpg",
-    "tags": ["ultralight", "versatile", "waterproof"]
-  },
-  {
-    "id": "shelter-002",
-    "name": "SOL Emergency Bivvy",
-    "category": "shelter",
-    "weight_oz": 3.8,
-    "price_usd": 16.99,
-    "description": "Reflective emergency sleeping bag that retains 90% of body heat. Tear-resistant and reusable.",
-    "coverage_contribution": 12,
-    "essential": true,
-    "image_url": "/images/bivvy.jpg",
-    "tags": ["emergency", "compact", "heat-retention"]
-  },
-  {
-    "id": "shelter-003",
-    "name": "Paracord 550 - 100ft",
-    "category": "shelter",
-    "weight_oz": 7.0,
-    "price_usd": 9.99,
-    "description": "Military-grade 550 paracord with 7 inner strands. 550 lb tensile strength. Essential for shelter building.",
-    "coverage_contribution": 6,
-    "essential": false,
-    "image_url": "/images/paracord.jpg",
-    "tags": ["multipurpose", "strong", "essential"]
-  },
-  {
-    "id": "food-001",
-    "name": "Mountain House Beef Stroganoff",
-    "category": "food",
-    "weight_oz": 4.8,
-    "price_usd": 12.49,
-    "description": "Freeze-dried meal serving 2. Just add boiling water. 30-year shelf life. 520 calories per serving.",
-    "coverage_contribution": 8,
-    "essential": false,
-    "image_url": "/images/stroganoff.jpg",
-    "tags": ["freeze-dried", "high-calorie", "easy-prep"]
-  },
-  {
-    "id": "food-002",
-    "name": "Clif Bar Variety 12-Pack",
-    "category": "food",
-    "weight_oz": 28.8,
-    "price_usd": 18.99,
-    "description": "12 energy bars with 250 calories each. Provides sustained energy from organic oats and plant protein.",
-    "coverage_contribution": 10,
-    "essential": false,
-    "image_url": "/images/clifbars.jpg",
-    "tags": ["energy", "no-cook", "portable"]
-  },
-  {
-    "id": "food-003",
-    "name": "Stanley Adventure Cook Set",
-    "category": "food",
-    "weight_oz": 13.0,
-    "price_usd": 29.99,
-    "description": "Stainless steel pot with lid, two cups, and vented lid. Nests for compact storage. Campfire safe.",
-    "coverage_contribution": 10,
-    "essential": true,
-    "image_url": "/images/cookset.jpg",
-    "tags": ["cooking", "durable", "nesting"]
-  },
-  {
-    "id": "medical-001",
-    "name": "Adventure Medical Ultralight Kit",
-    "category": "medical",
-    "weight_oz": 5.4,
-    "price_usd": 24.99,
-    "description": "Comprehensive first aid kit for 1-2 people on trips up to 4 days. Includes wound care, medications, and instructions.",
-    "coverage_contribution": 14,
-    "essential": true,
-    "image_url": "/images/medkit.jpg",
-    "tags": ["comprehensive", "organized", "instructions"]
-  },
-  {
-    "id": "medical-002",
-    "name": "CAT Tourniquet Gen 7",
-    "category": "medical",
-    "weight_oz": 2.7,
-    "price_usd": 29.95,
-    "description": "Combat Application Tourniquet used by US military. Self-applicable in emergencies. Can be applied in seconds.",
-    "coverage_contribution": 8,
-    "essential": false,
-    "image_url": "/images/tourniquet.jpg",
-    "tags": ["trauma", "life-saving", "military-grade"]
-  },
-  {
-    "id": "medical-003",
-    "name": "QuikClot Gauze 3x4ft",
-    "category": "medical",
-    "weight_oz": 1.8,
-    "price_usd": 44.99,
-    "description": "Hemostatic gauze that stops severe bleeding 5x faster than regular gauze. Z-folded for rapid deployment.",
-    "coverage_contribution": 6,
-    "essential": false,
-    "image_url": "/images/quikclot.jpg",
-    "tags": ["trauma", "hemostatic", "professional"]
-  },
-  {
-    "id": "tools-001",
-    "name": "Leatherman Signal Multi-Tool",
-    "category": "tools",
-    "weight_oz": 7.5,
-    "price_usd": 129.95,
-    "description": "19 tools including knife, saw, ferro rod, and whistle. Built for outdoor adventurers. 25-year warranty.",
-    "coverage_contribution": 16,
-    "essential": true,
-    "image_url": "/images/leatherman.jpg",
-    "tags": ["multi-tool", "survival", "quality"]
-  },
-  {
-    "id": "tools-002",
-    "name": "Silky Gomboy 210mm Saw",
-    "category": "tools",
-    "weight_oz": 9.6,
-    "price_usd": 44.99,
-    "description": "Folding hand saw with curved blade for fast cutting. Cuts on pull stroke. Locks open and closed.",
-    "coverage_contribution": 8,
-    "essential": false,
-    "image_url": "/images/silkysaw.jpg",
-    "tags": ["cutting", "folding", "efficient"]
-  },
-  {
-    "id": "tools-003",
-    "name": "Petzl Actik Core Headlamp",
-    "category": "tools",
-    "weight_oz": 2.9,
-    "price_usd": 69.95,
-    "description": "450-lumen rechargeable headlamp with red light mode. USB charging, 130-hour runtime on low. IPX4 rated.",
-    "coverage_contribution": 10,
-    "essential": true,
-    "image_url": "/images/headlamp.jpg",
-    "tags": ["illumination", "rechargeable", "hands-free"]
-  },
-  {
-    "id": "tools-004",
-    "name": "Suunto MC-2 Compass",
-    "category": "tools",
-    "weight_oz": 2.5,
-    "price_usd": 54.99,
-    "description": "Professional-grade mirror sighting compass with clinometer. Adjustable declination. Luminous bezel.",
-    "coverage_contribution": 8,
-    "essential": true,
-    "image_url": "/images/compass.jpg",
-    "tags": ["navigation", "precision", "reliable"]
-  },
-  {
-    "id": "tools-005",
-    "name": "Fox 40 Classic Whistle",
-    "category": "tools",
-    "weight_oz": 0.4,
-    "price_usd": 6.99,
-    "description": "Pealess whistle audible up to 1 mile. 115 decibels. Works when wet. International distress signal tool.",
-    "coverage_contribution": 4,
-    "essential": true,
-    "image_url": "/images/whistle.jpg",
-    "tags": ["signaling", "emergency", "loud"]
-  }
-]
-
+ [
+    {
+      "id": "water-001",
+      "name": "Water Bottle (32oz)",
+      "category": "water",
+      "weight_oz": 6.2,
+      "price_usd": 13,
+      "description": "Durable wide-mouth water bottle for carrying and storing water.",
+      "coverage_contribution": 8,
+      "essential": true,
+      "image_url": "",
+      "tags": [
+        "budget",
+        "durable"
+      ],
+      "provides": [
+        "water_storage",
+        "water_boiling_container"
+      ],
+      "requires": [],
+      "redundancy_group": "water_storage"
+    },
+    {
+      "id": "water-002",
+      "name": "Water Bottle (16oz)",
+      "category": "water",
+      "weight_oz": 4.0,
+      "price_usd": 9,
+      "description": "Compact water bottle for secondary storage or day use.",
+      "coverage_contribution": 5,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "compact"
+      ],
+      "provides": [
+        "water_storage"
+      ],
+      "requires": [],
+      "redundancy_group": "water_storage"
+    },
+    {
+      "id": "water-003",
+      "name": "Squeeze Water Filter",
+      "category": "water",
+      "weight_oz": 3.0,
+      "price_usd": 35,
+      "description": "Compact squeeze filter that removes 99.99% of bacteria and protozoa.",
+      "coverage_contribution": 15,
+      "essential": true,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "premium"
+      ],
+      "provides": [
+        "water_treatment",
+        "water_filtration"
+      ],
+      "requires": [
+        "water_storage"
+      ],
+      "redundancy_group": "water_treatment"
+    },
+    {
+      "id": "water-004",
+      "name": "Personal Straw Filter",
+      "category": "water",
+      "weight_oz": 2.0,
+      "price_usd": 20,
+      "description": "Drink directly from water sources. Filters bacteria and parasites.",
+      "coverage_contribution": 12,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "budget"
+      ],
+      "provides": [
+        "water_treatment",
+        "water_filtration"
+      ],
+      "requires": [],
+      "redundancy_group": "water_treatment"
+    },
+    {
+      "id": "water-005",
+      "name": "Water Purification Tablets (50ct)",
+      "category": "water",
+      "weight_oz": 0.5,
+      "price_usd": 9,
+      "description": "Chemical tablets that kill viruses, bacteria, and cysts. 30 min treatment time.",
+      "coverage_contribution": 10,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "budget",
+        "backup"
+      ],
+      "provides": [
+        "water_treatment",
+        "water_purification"
+      ],
+      "requires": [
+        "water_storage"
+      ],
+      "redundancy_group": "water_treatment"
+    },
+    {
+      "id": "water-006",
+      "name": "Collapsible Water Container (2L)",
+      "category": "water",
+      "weight_oz": 1.5,
+      "price_usd": 12,
+      "description": "Flexible container that rolls up when empty. Ideal for carrying extra water.",
+      "coverage_contribution": 6,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "packable"
+      ],
+      "provides": [
+        "water_storage"
+      ],
+      "requires": [],
+      "redundancy_group": "water_storage"
+    },
+    {
+      "id": "water-007",
+      "name": "Hydration Bladder (3L)",
+      "category": "water",
+      "weight_oz": 5.5,
+      "price_usd": 30,
+      "description": "Hands-free hydration with drinking tube. Fits in pack bladder sleeve.",
+      "coverage_contribution": 8,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "premium",
+        "hands-free"
+      ],
+      "provides": [
+        "water_storage"
+      ],
+      "requires": [],
+      "redundancy_group": "water_storage"
+    },
+    {
+      "id": "water-008",
+      "name": "Collapsible Water Container (5L)",
+      "category": "water",
+      "weight_oz": 2.5,
+      "price_usd": 15,
+      "description": "Large capacity collapsible container for base camp water storage.",
+      "coverage_contribution": 7,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "budget",
+        "high-capacity"
+      ],
+      "provides": [
+        "water_storage"
+      ],
+      "requires": [],
+      "redundancy_group": "water_storage"
+    },
+    {
+      "id": "water-009",
+      "name": "Water Purification Drops",
+      "category": "water",
+      "weight_oz": 3,
+      "price_usd": 15,
+      "description": "Two-part chlorine dioxide treatment. Kills viruses, bacteria, and cysts. 30 gallon capacity.",
+      "coverage_contribution": 10,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "chemical",
+        "backup"
+      ],
+      "provides": [
+        "water_treatment",
+        "water_purification"
+      ],
+      "requires": [
+        "water_storage"
+      ],
+      "redundancy_group": "water_treatment"
+    },
+    {
+      "id": "fire-001",
+      "name": "Butane Lighter",
+      "category": "fire",
+      "weight_oz": 0.8,
+      "price_usd": 2,
+      "description": "Simple, reliable flame. Works in most conditions but can fail when wet or cold.",
+      "coverage_contribution": 10,
+      "essential": true,
+      "image_url": "",
+      "tags": [
+        "budget",
+        "compact"
+      ],
+      "provides": [
+        "fire_ignition"
+      ],
+      "requires": [],
+      "redundancy_group": "fire_ignition"
+    },
+    {
+      "id": "fire-002",
+      "name": "Butane Lighter (3-Pack)",
+      "category": "fire",
+      "weight_oz": 2.4,
+      "price_usd": 6,
+      "description": "Three disposable lighters for redundancy. Store in separate locations.",
+      "coverage_contribution": 12,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "budget",
+        "redundancy"
+      ],
+      "provides": [
+        "fire_ignition"
+      ],
+      "requires": [],
+      "redundancy_group": "fire_ignition"
+    },
+    {
+      "id": "fire-003",
+      "name": "Ferro Rod Fire Starter",
+      "category": "fire",
+      "weight_oz": 1.8,
+      "price_usd": 13,
+      "description": "Ferrocerium rod produces 5,500\u00b0F sparks. Works when wet. Requires practice.",
+      "coverage_contribution": 14,
+      "essential": true,
+      "image_url": "",
+      "tags": [
+        "durable",
+        "all-weather"
+      ],
+      "provides": [
+        "fire_ignition"
+      ],
+      "requires": [
+        "fire_tinder"
+      ],
+      "redundancy_group": "fire_ignition"
+    },
+    {
+      "id": "fire-004",
+      "name": "Stormproof Matches",
+      "category": "fire",
+      "weight_oz": 1.2,
+      "price_usd": 8,
+      "description": "Windproof and waterproof matches. Burn for 15 seconds even after being submerged.",
+      "coverage_contribution": 10,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "all-weather",
+        "backup"
+      ],
+      "provides": [
+        "fire_ignition"
+      ],
+      "requires": [],
+      "redundancy_group": "fire_ignition"
+    },
+    {
+      "id": "fire-005",
+      "name": "Fresnel Lens",
+      "category": "fire",
+      "weight_oz": 0.3,
+      "price_usd": 4,
+      "description": "Credit card-sized magnifying lens. Solar fire starting in sunny conditions.",
+      "coverage_contribution": 4,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "budget",
+        "solar"
+      ],
+      "provides": [
+        "fire_ignition"
+      ],
+      "requires": [],
+      "redundancy_group": "fire_ignition"
+    },
+    {
+      "id": "fire-006",
+      "name": "Tinder Tabs (10-Pack)",
+      "category": "fire",
+      "weight_oz": 1.0,
+      "price_usd": 6,
+      "description": "Commercial fire tinder that lights easily and burns hot. Works when wet.",
+      "coverage_contribution": 6,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "budget",
+        "reliable"
+      ],
+      "provides": [
+        "fire_tinder"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "fire-007",
+      "name": "Fire Starter Cubes (12ct)",
+      "category": "fire",
+      "weight_oz": 3.0,
+      "price_usd": 7,
+      "description": "Wax-based cubes that burn 8-12 minutes. Easy to light with spark or flame.",
+      "coverage_contribution": 8,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "budget",
+        "long-burn"
+      ],
+      "provides": [
+        "fire_tinder",
+        "fire_accelerant"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "fire-008",
+      "name": "Waterproof Match Container",
+      "category": "fire",
+      "weight_oz": 0.5,
+      "price_usd": 5,
+      "description": "Watertight container with striker pad. Keeps matches dry.",
+      "coverage_contribution": 2,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "accessory",
+        "waterproof"
+      ],
+      "provides": [],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "fire-009",
+      "name": "Windproof Jet Lighter",
+      "category": "fire",
+      "weight_oz": 1.5,
+      "price_usd": 12,
+      "description": "Butane torch lighter with wind-resistant jet flame. Refillable. Works at altitude.",
+      "coverage_contribution": 11,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "all-weather",
+        "refillable"
+      ],
+      "provides": [
+        "fire_ignition"
+      ],
+      "requires": [],
+      "redundancy_group": "fire_ignition"
+    },
+    {
+      "id": "shelter-001",
+      "name": "Emergency Bivvy",
+      "category": "shelter",
+      "weight_oz": 3.8,
+      "price_usd": 17,
+      "description": "Reflective sleeping bag that retains 90% of body heat. Tear-resistant material.",
+      "coverage_contribution": 14,
+      "essential": true,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "compact",
+        "emergency"
+      ],
+      "provides": [
+        "shelter_insulation",
+        "shelter_overhead"
+      ],
+      "requires": [],
+      "redundancy_group": "shelter_insulation"
+    },
+    {
+      "id": "shelter-002",
+      "name": "Tarp (8x10 ft)",
+      "category": "shelter",
+      "weight_oz": 14.0,
+      "price_usd": 25,
+      "description": "Versatile overhead shelter. Multiple configuration options with proper cordage.",
+      "coverage_contribution": 15,
+      "essential": true,
+      "image_url": "",
+      "tags": [
+        "versatile",
+        "durable"
+      ],
+      "provides": [
+        "shelter_overhead"
+      ],
+      "requires": [
+        "shelter_cordage"
+      ],
+      "redundancy_group": "shelter_overhead"
+    },
+    {
+      "id": "shelter-003",
+      "name": "Ultralight Tarp (5x7 ft)",
+      "category": "shelter",
+      "weight_oz": 7.0,
+      "price_usd": 50,
+      "description": "Silnylon tarp for weight-conscious builds. Requires more skill to pitch effectively.",
+      "coverage_contribution": 12,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "premium"
+      ],
+      "provides": [
+        "shelter_overhead"
+      ],
+      "requires": [
+        "shelter_cordage"
+      ],
+      "redundancy_group": "shelter_overhead"
+    },
+    {
+      "id": "shelter-004",
+      "name": "Paracord (100 ft)",
+      "category": "shelter",
+      "weight_oz": 7.0,
+      "price_usd": 10,
+      "description": "550 paracord with 7 inner strands. Essential for shelter building and repairs.",
+      "coverage_contribution": 8,
+      "essential": true,
+      "image_url": "",
+      "tags": [
+        "versatile",
+        "multi-use"
+      ],
+      "provides": [
+        "shelter_cordage"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "shelter-005",
+      "name": "Paracord (50 ft)",
+      "category": "shelter",
+      "weight_oz": 4.0,
+      "price_usd": 6,
+      "description": "Shorter length for lighter packs. May need to ration for multiple uses.",
+      "coverage_contribution": 5,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "budget"
+      ],
+      "provides": [
+        "shelter_cordage"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "shelter-006",
+      "name": "Emergency Blanket (2-Pack)",
+      "category": "shelter",
+      "weight_oz": 2.0,
+      "price_usd": 5,
+      "description": "Mylar blankets reflect body heat. Single-use but extremely packable.",
+      "coverage_contribution": 6,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "budget",
+        "emergency"
+      ],
+      "provides": [
+        "shelter_insulation"
+      ],
+      "requires": [],
+      "redundancy_group": "shelter_insulation"
+    },
+    {
+      "id": "shelter-007",
+      "name": "Rain Poncho",
+      "category": "shelter",
+      "weight_oz": 6.0,
+      "price_usd": 13,
+      "description": "Keeps you dry while moving. Can double as emergency ground cover or shelter.",
+      "coverage_contribution": 8,
+      "essential": true,
+      "image_url": "",
+      "tags": [
+        "multi-use",
+        "waterproof"
+      ],
+      "provides": [
+        "shelter_rain_protection",
+        "shelter_overhead"
+      ],
+      "requires": [],
+      "redundancy_group": "shelter_rain_protection"
+    },
+    {
+      "id": "shelter-008",
+      "name": "Closed Cell Foam Pad",
+      "category": "shelter",
+      "weight_oz": 14.0,
+      "price_usd": 20,
+      "description": "Ground insulation prevents heat loss to cold ground. Doubles as sitting pad.",
+      "coverage_contribution": 10,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "durable",
+        "insulation"
+      ],
+      "provides": [
+        "shelter_ground"
+      ],
+      "requires": [],
+      "redundancy_group": "shelter_ground"
+    },
+    {
+      "id": "shelter-009",
+      "name": "Tent Stakes (6-Pack)",
+      "category": "shelter",
+      "weight_oz": 3.0,
+      "price_usd": 8,
+      "description": "Aluminum stakes for securing tarps and shelters. Y-beam design holds in soft ground.",
+      "coverage_contribution": 4,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "accessory",
+        "ultralight"
+      ],
+      "provides": [],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "shelter-010",
+      "name": "Breathable Bivy Sack",
+      "category": "shelter",
+      "weight_oz": 9,
+      "price_usd": 45,
+      "description": "Waterproof-breathable bivy for actual sleeping. Reduces condensation vs emergency bivvy.",
+      "coverage_contribution": 16,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "premium",
+        "breathable"
+      ],
+      "provides": [
+        "shelter_insulation",
+        "shelter_overhead",
+        "shelter_ground"
+      ],
+      "requires": [],
+      "redundancy_group": "shelter_insulation"
+    },
+    {
+      "id": "shelter-011",
+      "name": "Sleeping Bag Liner",
+      "category": "shelter",
+      "weight_oz": 5,
+      "price_usd": 25,
+      "description": "Adds 10-15°F to any sleep system. Works standalone in warm weather.",
+      "coverage_contribution": 8,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "versatile"
+      ],
+      "provides": [
+        "shelter_insulation"
+      ],
+      "requires": [],
+      "redundancy_group": "shelter_insulation"
+    },
+    {
+      "id": "food-001",
+      "name": "Freeze-Dried Meal (2 servings)",
+      "category": "food",
+      "weight_oz": 5.0,
+      "price_usd": 10,
+      "description": "Just add boiling water. 500+ calories per serving. 5-year shelf life.",
+      "coverage_contribution": 12,
+      "essential": true,
+      "image_url": "",
+      "tags": [
+        "lightweight",
+        "long-shelf-life"
+      ],
+      "provides": [
+        "food_calories"
+      ],
+      "requires": [
+        "water_storage",
+        "food_cooking"
+      ],
+      "redundancy_group": null
+    },
+    {
+      "id": "food-002",
+      "name": "Freeze-Dried Meal (3-Pack)",
+      "category": "food",
+      "weight_oz": 14.0,
+      "price_usd": 28,
+      "description": "Three meals for a 72-hour kit. Variety of flavors. Requires hot water.",
+      "coverage_contribution": 18,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "lightweight",
+        "long-shelf-life"
+      ],
+      "provides": [
+        "food_calories"
+      ],
+      "requires": [
+        "water_storage",
+        "food_cooking"
+      ],
+      "redundancy_group": null
+    },
+    {
+      "id": "food-003",
+      "name": "Energy Bars (6-Pack)",
+      "category": "food",
+      "weight_oz": 12.0,
+      "price_usd": 15,
+      "description": "High-calorie bars that require no preparation. Good balance of carbs, protein, fat.",
+      "coverage_contribution": 10,
+      "essential": true,
+      "image_url": "",
+      "tags": [
+        "no-cook",
+        "convenient"
+      ],
+      "provides": [
+        "food_calories"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "food-004",
+      "name": "Energy Bars (12-Pack)",
+      "category": "food",
+      "weight_oz": 24.0,
+      "price_usd": 27,
+      "description": "Full 72-hour supply of no-cook calories. Rotate stock every 6-12 months.",
+      "coverage_contribution": 15,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "no-cook",
+        "convenient"
+      ],
+      "provides": [
+        "food_calories"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "food-005",
+      "name": "Trail Mix (1 lb)",
+      "category": "food",
+      "weight_oz": 16.0,
+      "price_usd": 9,
+      "description": "Calorie-dense mix of nuts, dried fruit, and chocolate. No prep needed.",
+      "coverage_contribution": 8,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "budget",
+        "no-cook"
+      ],
+      "provides": [
+        "food_calories"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "food-006",
+      "name": "Mess Kit",
+      "category": "food",
+      "weight_oz": 8.0,
+      "price_usd": 13,
+      "description": "Nesting pot, pan, and utensils. Everything needed to cook and eat a meal.",
+      "coverage_contribution": 8,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "compact",
+        "multi-piece"
+      ],
+      "provides": [
+        "food_cooking",
+        "food_utensils",
+        "water_boiling_container"
+      ],
+      "requires": [
+        "fire_ignition"
+      ],
+      "redundancy_group": null
+    },
+    {
+      "id": "food-007",
+      "name": "Spork",
+      "category": "food",
+      "weight_oz": 0.5,
+      "price_usd": 4,
+      "description": "Combination spoon-fork. Lightweight and durable.",
+      "coverage_contribution": 3,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "budget"
+      ],
+      "provides": [
+        "food_utensils"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "food-008",
+      "name": "Boiling Pot (750ml)",
+      "category": "food",
+      "weight_oz": 5.5,
+      "price_usd": 15,
+      "description": "Titanium pot for boiling water and cooking. Lightweight and corrosion-resistant.",
+      "coverage_contribution": 8,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "premium"
+      ],
+      "provides": [
+        "food_cooking",
+        "water_boiling_container"
+      ],
+      "requires": [
+        "fire_ignition"
+      ],
+      "redundancy_group": null
+    },
+    {
+      "id": "food-009",
+      "name": "Boiling Pot (1L)",
+      "category": "food",
+      "weight_oz": 7.0,
+      "price_usd": 12,
+      "description": "Stainless steel pot with lid. Durable and affordable. Heavier than titanium.",
+      "coverage_contribution": 8,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "budget",
+        "durable"
+      ],
+      "provides": [
+        "food_cooking",
+        "water_boiling_container"
+      ],
+      "requires": [
+        "fire_ignition"
+      ],
+      "redundancy_group": null
+    },
+    {
+      "id": "food-010",
+      "name": "Electrolyte Packets (10-Pack)",
+      "category": "food",
+      "weight_oz": 2,
+      "price_usd": 12,
+      "description": "Powder mix for hydration and electrolyte replacement. Critical during exertion or illness.",
+      "coverage_contribution": 6,
+      "essential": true,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "hydration"
+      ],
+      "provides": [
+        "food_hydration"
+      ],
+      "requires": [
+        "water_storage"
+      ],
+      "redundancy_group": null
+    },
+    {
+      "id": "food-011",
+      "name": "Instant Coffee Packets (10-Pack)",
+      "category": "food",
+      "weight_oz": 1.5,
+      "price_usd": 8,
+      "description": "Single-serve coffee for morale and alertness. Just add hot water.",
+      "coverage_contribution": 2,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "morale"
+      ],
+      "provides": [],
+      "requires": [
+        "water_storage"
+      ],
+      "redundancy_group": null
+    },
+    {
+      "id": "food-012",
+      "name": "Hard Candy (Bag)",
+      "category": "food",
+      "weight_oz": 4,
+      "price_usd": 4,
+      "description": "Quick sugar for energy. Long shelf life. Morale booster.",
+      "coverage_contribution": 3,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "budget",
+        "no-cook",
+        "morale"
+      ],
+      "provides": [
+        "food_calories"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "medical-001",
+      "name": "Individual First Aid Kit (IFAK)",
+      "category": "medical",
+      "weight_oz": 12.0,
+      "price_usd": 35,
+      "description": "Comprehensive kit with bandages, gauze, antiseptic, tape, and basic trauma supplies.",
+      "coverage_contribution": 18,
+      "essential": true,
+      "image_url": "",
+      "tags": [
+        "comprehensive",
+        "essential"
+      ],
+      "provides": [
+        "medical_wound_care",
+        "medical_trauma"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "medical-002",
+      "name": "Adhesive Bandages (Variety Pack)",
+      "category": "medical",
+      "weight_oz": 1.5,
+      "price_usd": 6,
+      "description": "Assorted sizes for minor cuts and blisters. Waterproof options included.",
+      "coverage_contribution": 4,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "budget",
+        "basic"
+      ],
+      "provides": [
+        "medical_wound_care"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "medical-003",
+      "name": "Tourniquet (Combat Style)",
+      "category": "medical",
+      "weight_oz": 2.5,
+      "price_usd": 30,
+      "description": "One-handed application. For life-threatening limb bleeding. Requires training.",
+      "coverage_contribution": 10,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "trauma",
+        "advanced"
+      ],
+      "provides": [
+        "medical_trauma"
+      ],
+      "requires": [],
+      "redundancy_group": "medical_trauma"
+    },
+    {
+      "id": "medical-004",
+      "name": "Emergency Bandage (6-inch)",
+      "category": "medical",
+      "weight_oz": 3.0,
+      "price_usd": 13,
+      "description": "Compression bandage for severe wounds. Built-in pressure applicator.",
+      "coverage_contribution": 8,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "trauma",
+        "compression"
+      ],
+      "provides": [
+        "medical_trauma",
+        "medical_wound_care"
+      ],
+      "requires": [],
+      "redundancy_group": "medical_trauma"
+    },
+    {
+      "id": "medical-005",
+      "name": "Medical Tape (2-Pack)",
+      "category": "medical",
+      "weight_oz": 1.0,
+      "price_usd": 5,
+      "description": "Adhesive tape for securing bandages and dressings. Tears easily by hand.",
+      "coverage_contribution": 3,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "budget",
+        "basic"
+      ],
+      "provides": [
+        "medical_wound_care"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "medical-006",
+      "name": "OTC Medications (Blister Pack)",
+      "category": "medical",
+      "weight_oz": 2.0,
+      "price_usd": 10,
+      "description": "Pain relievers, antihistamines, anti-diarrheal, and electrolytes in blister packs.",
+      "coverage_contribution": 6,
+      "essential": true,
+      "image_url": "",
+      "tags": [
+        "comprehensive",
+        "medications"
+      ],
+      "provides": [
+        "medical_medications"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "medical-007",
+      "name": "Prescription Meds Container",
+      "category": "medical",
+      "weight_oz": 1.0,
+      "price_usd": 4,
+      "description": "Waterproof container for personal prescription medications. Label clearly.",
+      "coverage_contribution": 2,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "accessory",
+        "waterproof"
+      ],
+      "provides": [],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "medical-008",
+      "name": "Tweezers (Fine Point)",
+      "category": "medical",
+      "weight_oz": 0.3,
+      "price_usd": 5,
+      "description": "Precision tweezers for splinters, ticks, and debris removal.",
+      "coverage_contribution": 2,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "precision"
+      ],
+      "provides": [
+        "medical_wound_care"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "medical-009",
+      "name": "Trauma Shears",
+      "category": "medical",
+      "weight_oz": 2.0,
+      "price_usd": 8,
+      "description": "Blunt-tip shears for cutting clothing, tape, and bandages. Safety notch included.",
+      "coverage_contribution": 4,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "trauma",
+        "multi-use"
+      ],
+      "provides": [
+        "medical_trauma"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "medical-010",
+      "name": "Gauze Pads (10-Pack)",
+      "category": "medical",
+      "weight_oz": 1.5,
+      "price_usd": 5,
+      "description": "Sterile 4x4 gauze pads for wound dressing and cleaning.",
+      "coverage_contribution": 4,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "budget",
+        "basic"
+      ],
+      "provides": [
+        "medical_wound_care"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "medical-011",
+      "name": "Nitrile Gloves (5-Pair)",
+      "category": "medical",
+      "weight_oz": 1.5,
+      "price_usd": 4,
+      "description": "Disposable medical gloves for hygiene when treating wounds.",
+      "coverage_contribution": 2,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "budget",
+        "hygiene"
+      ],
+      "provides": [],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "medical-012",
+      "name": "Chest Seal (2-Pack)",
+      "category": "medical",
+      "weight_oz": 1.5,
+      "price_usd": 16,
+      "description": "Vented adhesive seals for penetrating chest trauma. Apply to entry and exit wounds.",
+      "coverage_contribution": 6,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "trauma",
+        "advanced"
+      ],
+      "provides": [
+        "medical_trauma"
+      ],
+      "requires": [],
+      "redundancy_group": "medical_trauma"
+    },
+    {
+      "id": "medical-013",
+      "name": "SAM Splint",
+      "category": "medical",
+      "weight_oz": 4,
+      "price_usd": 12,
+      "description": "Moldable foam-aluminum splint for fractures and sprains. Reusable and versatile.",
+      "coverage_contribution": 6,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "trauma",
+        "reusable"
+      ],
+      "provides": [
+        "medical_fracture"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "medical-014",
+      "name": "Hemostatic Gauze",
+      "category": "medical",
+      "weight_oz": 1,
+      "price_usd": 28,
+      "description": "Clotting agent-impregnated gauze for severe bleeding. Pack wounds directly.",
+      "coverage_contribution": 8,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "trauma",
+        "advanced"
+      ],
+      "provides": [
+        "medical_trauma"
+      ],
+      "requires": [],
+      "redundancy_group": "medical_trauma"
+    },
+    {
+      "id": "medical-015",
+      "name": "Sunscreen Packets (10-Pack)",
+      "category": "medical",
+      "weight_oz": 2,
+      "price_usd": 8,
+      "description": "Single-use SPF 30+ packets. Prevents sunburn during extended outdoor exposure.",
+      "coverage_contribution": 2,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "prevention"
+      ],
+      "provides": [],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "medical-016",
+      "name": "Insect Repellent Wipes (10-Pack)",
+      "category": "medical",
+      "weight_oz": 1.5,
+      "price_usd": 6,
+      "description": "DEET-based wipes for mosquitoes and ticks. Prevents disease transmission.",
+      "coverage_contribution": 2,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "prevention"
+      ],
+      "provides": [],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "tools-001",
+      "name": "Fixed Blade Knife (4-inch)",
+      "category": "tools",
+      "weight_oz": 6.5,
+      "price_usd": 40,
+      "description": "Full-tang fixed blade with sheath. Reliable for batoning, carving, and general use.",
+      "coverage_contribution": 14,
+      "essential": true,
+      "image_url": "",
+      "tags": [
+        "durable",
+        "essential"
+      ],
+      "provides": [
+        "tools_cutting"
+      ],
+      "requires": [],
+      "redundancy_group": "tools_cutting"
+    },
+    {
+      "id": "tools-002",
+      "name": "Multitool",
+      "category": "tools",
+      "weight_oz": 8.0,
+      "price_usd": 50,
+      "description": "Pliers, knife, screwdrivers, can opener, and more. Swiss army of tools.",
+      "coverage_contribution": 12,
+      "essential": true,
+      "image_url": "",
+      "tags": [
+        "versatile",
+        "multi-use"
+      ],
+      "provides": [
+        "tools_cutting",
+        "tools_repair"
+      ],
+      "requires": [],
+      "redundancy_group": "tools_cutting"
+    },
+    {
+      "id": "tools-003",
+      "name": "Headlamp",
+      "category": "tools",
+      "weight_oz": 3.5,
+      "price_usd": 25,
+      "description": "Hands-free illumination with multiple brightness modes. Red light preserves night vision.",
+      "coverage_contribution": 12,
+      "essential": true,
+      "image_url": "",
+      "tags": [
+        "hands-free",
+        "essential"
+      ],
+      "provides": [
+        "tools_illumination"
+      ],
+      "requires": [],
+      "redundancy_group": "tools_illumination"
+    },
+    {
+      "id": "tools-004",
+      "name": "Handheld Flashlight",
+      "category": "tools",
+      "weight_oz": 4.0,
+      "price_usd": 20,
+      "description": "Compact tactical flashlight with high lumens. Good for signaling and focused light.",
+      "coverage_contribution": 8,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "compact",
+        "backup"
+      ],
+      "provides": [
+        "tools_illumination",
+        "tools_signaling"
+      ],
+      "requires": [],
+      "redundancy_group": "tools_illumination"
+    },
+    {
+      "id": "tools-005",
+      "name": "Duct Tape (Mini Roll)",
+      "category": "tools",
+      "weight_oz": 2.0,
+      "price_usd": 5,
+      "description": "Universal repair solution. Wrap around pencil or lighter to save space.",
+      "coverage_contribution": 6,
+      "essential": true,
+      "image_url": "",
+      "tags": [
+        "versatile",
+        "repair"
+      ],
+      "provides": [
+        "tools_repair"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "tools-006",
+      "name": "Zip Ties (Assorted 50-Pack)",
+      "category": "tools",
+      "weight_oz": 2.0,
+      "price_usd": 6,
+      "description": "Various sizes for securing, bundling, and improvised repairs.",
+      "coverage_contribution": 4,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "budget",
+        "versatile"
+      ],
+      "provides": [
+        "tools_repair"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "tools-007",
+      "name": "Work Gloves",
+      "category": "tools",
+      "weight_oz": 4.0,
+      "price_usd": 15,
+      "description": "Leather or synthetic gloves for hand protection during rough work.",
+      "coverage_contribution": 4,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "protection",
+        "durable"
+      ],
+      "provides": [],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "tools-008",
+      "name": "N95 Masks (5-Pack)",
+      "category": "tools",
+      "weight_oz": 2.5,
+      "price_usd": 10,
+      "description": "Respiratory protection from dust, smoke, and airborne particles.",
+      "coverage_contribution": 4,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "protection",
+        "disposable"
+      ],
+      "provides": [],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "tools-009",
+      "name": "Notebook + Pencil",
+      "category": "tools",
+      "weight_oz": 2.0,
+      "price_usd": 6,
+      "description": "Waterproof notebook with pencil. For notes, maps, and leaving messages.",
+      "coverage_contribution": 3,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "communication",
+        "waterproof"
+      ],
+      "provides": [
+        "tools_navigation"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "tools-010",
+      "name": "Emergency Cash",
+      "category": "tools",
+      "weight_oz": 0.5,
+      "price_usd": 0,
+      "description": "Small bills for when cards don't work. Store in waterproof bag.",
+      "coverage_contribution": 4,
+      "essential": true,
+      "image_url": "",
+      "tags": [
+        "essential",
+        "emergency"
+      ],
+      "provides": [],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "tools-011",
+      "name": "Document Copies (Waterproof)",
+      "category": "tools",
+      "weight_oz": 1.0,
+      "price_usd": 0,
+      "description": "Copies of ID, insurance, emergency contacts in waterproof pouch.",
+      "coverage_contribution": 3,
+      "essential": true,
+      "image_url": "",
+      "tags": [
+        "essential",
+        "documentation"
+      ],
+      "provides": [],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "tools-012",
+      "name": "Compass (Baseplate)",
+      "category": "tools",
+      "weight_oz": 1.0,
+      "price_usd": 13,
+      "description": "Liquid-filled compass with baseplate for map navigation. No batteries required.",
+      "coverage_contribution": 6,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "navigation",
+        "no-battery"
+      ],
+      "provides": [
+        "tools_navigation"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "tools-013",
+      "name": "Whistle (Emergency)",
+      "category": "tools",
+      "weight_oz": 0.3,
+      "price_usd": 5,
+      "description": "Pealess whistle audible up to 1 mile. For signaling rescuers.",
+      "coverage_contribution": 4,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "signaling"
+      ],
+      "provides": [
+        "tools_signaling"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "tools-014",
+      "name": "Signal Mirror",
+      "category": "tools",
+      "weight_oz": 1,
+      "price_usd": 10,
+      "description": "Glass mirror with sighting hole. Visible up to 10 miles in sunlight. No batteries needed.",
+      "coverage_contribution": 5,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "signaling"
+      ],
+      "provides": [
+        "tools_signaling"
+      ],
+      "requires": [],
+      "redundancy_group": "tools_signaling"
+    },
+    {
+      "id": "tools-015",
+      "name": "Sewing Kit (Compact)",
+      "category": "tools",
+      "weight_oz": 1,
+      "price_usd": 6,
+      "description": "Needles, thread, buttons, safety pins. For gear repair and emergency wound closure.",
+      "coverage_contribution": 3,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "repair"
+      ],
+      "provides": [
+        "tools_repair"
+      ],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "tools-016",
+      "name": "Folding Saw (7-inch blade)",
+      "category": "tools",
+      "weight_oz": 6.5,
+      "price_usd": 35,
+      "description": "Compact folding saw with aggressive teeth. Cuts branches up to 4 inches. Locks open and closed.",
+      "coverage_contribution": 8,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "compact",
+        "cutting"
+      ],
+      "provides": [
+        "tools_cutting"
+      ],
+      "requires": [],
+      "redundancy_group": "tools_cutting"
+    },
+    {
+      "id": "tools-017",
+      "name": "Carabiners (3-Pack)",
+      "category": "tools",
+      "weight_oz": 2.5,
+      "price_usd": 8,
+      "description": "Aluminum non-locking carabiners for gear attachment and shelter rigging. Not for climbing.",
+      "coverage_contribution": 3,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "ultralight",
+        "versatile"
+      ],
+      "provides": [],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "tools-018",
+      "name": "Spare Batteries (AA 4-Pack)",
+      "category": "tools",
+      "weight_oz": 3,
+      "price_usd": 6,
+      "description": "Lithium batteries for extended shelf life. Match to your headlamp and flashlight.",
+      "coverage_contribution": 4,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "essential",
+        "backup"
+      ],
+      "provides": [],
+      "requires": [],
+      "redundancy_group": null
+    },
+    {
+      "id": "tools-019",
+      "name": "Spare Batteries (CR123A 2-Pack)",
+      "category": "tools",
+      "weight_oz": 1.5,
+      "price_usd": 8,
+      "description": "Common tactical flashlight battery. Lithium for long shelf life.",
+      "coverage_contribution": 3,
+      "essential": false,
+      "image_url": "",
+      "tags": [
+        "backup"
+      ],
+      "provides": [],
+      "requires": [],
+      "redundancy_group": null
+    }
+  ]

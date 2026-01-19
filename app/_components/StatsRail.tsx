@@ -16,7 +16,7 @@ export default function StatsRail({ currentKit, categoryList, budget, maxWeight 
     <div className="stats-rail h-full flex flex-col gap-5">
       <StatsPanel currentKit={currentKit} budget={budget} maxWeight={maxWeight} />
       <CoveragePanel categoryList={categoryList} currentKit={currentKit}/>
-      <WarningPanel />
+      <WarningPanel currentKit={currentKit} />
     </div>
   );
 }
