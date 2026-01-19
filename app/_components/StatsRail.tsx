@@ -13,10 +13,12 @@ type StatsRailProps = {
 
 export default function StatsRail({ currentKit, categoryList, budget, maxWeight }: StatsRailProps) {
   return (
-    <div className="stats-rail h-full flex flex-col gap-5">
+    <div className="stats-rail h-full flex flex-col gap-5 overflow-hidden">
       <StatsPanel currentKit={currentKit} budget={budget} maxWeight={maxWeight} />
       <CoveragePanel categoryList={categoryList} currentKit={currentKit}/>
-      <WarningPanel currentKit={currentKit} />
+      <div className="flex-1 min-h-0">
+        <WarningPanel currentKit={currentKit} />
+      </div>
     </div>
   );
 }

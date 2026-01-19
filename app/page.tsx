@@ -144,17 +144,17 @@ const handleLoadKit = () => {
   }
 
   return (
-    <div className="app font-rajdhani text-text-primary">
+    <div className="app font-rajdhani text-text-primary h-screen flex flex-col overflow-hidden">
       <Header onSaveKitClick={handleSaveKitClick} onLoadKitClick={handleLoadKitClick} />
       <SettingsBar budget={budget} maxWeight={maxWeight} onBudgetChange={handleBudgetChange} onMaxWeightChange={handleMaxWeightChange} />
-      <main className="grid grid-cols-12 min-h-[calc(100vh-110px)]">
-        <div className="col-span-2 h-full bg-surface-1/50 border-r border-border-soft p-4 shadow-panel">
+      <main className="flex-1 grid grid-cols-12 overflow-hidden">
+        <div className="col-span-2 h-full bg-surface-1/50 border-r border-border-soft p-4 shadow-panel overflow-hidden">
           <CategoryRail selectedCategory={selectedCategory} onSelectCategory={(category) => setSelectedCategory(category)} currentKit={kit}/>
         </div>
-        <div className="col-span-7 h-full bg-bg-base/30">
+        <div className="col-span-7 h-full bg-bg-base/30 overflow-y-auto">
           <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay} toggleItemInKit={toggleItemInKit} currentKit={kit} />
         </div>
-        <div className="col-span-3 h-full bg-surface-1/50 border-l border-border-soft p-4 shadow-panel">
+        <div className="col-span-3 h-full bg-surface-1/50 border-l border-border-soft p-4 shadow-panel overflow-hidden">
           <StatsRail currentKit={kit} categoryList={categoryList} budget={budget} maxWeight={maxWeight} />
         </div>
       </main>
