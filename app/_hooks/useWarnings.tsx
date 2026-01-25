@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Kit, Warning } from "../_types";
+import { Warning, WorkingKit } from "../_types";
 
 // Core capabilities required per category
 const REQUIRED_CAPABILITIES: Record<string, string[]> = {
@@ -28,7 +28,7 @@ function formatCapability(cap: string): string {
 }
 
 export default function useWarnings(
-  currentKit: Omit<Kit, 'id' | 'created_at' | 'updated_at'>
+  currentKit: WorkingKit
 ): Warning[] {
   return useMemo(() => {
     const warnings: Warning[] = [];

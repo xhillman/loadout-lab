@@ -34,6 +34,8 @@ export type Kit = {
   };
 };
 
+export type WorkingKit = Omit<Kit, 'id' | 'created_at' | 'updated_at'>;
+
 export type Category = {
   name: string;
   coverage: number;

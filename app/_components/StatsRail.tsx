@@ -2,10 +2,10 @@ import StatsPanel from "./StatsPanel";
 import CoveragePanel from "./CoveragePanel";
 import WarningPanel from "./WarningPanel";
 
-import { Category, Kit } from "../_types";
+import { Category, WorkingKit } from "../_types";
 
 type StatsRailProps = {
-  currentKit: Omit<Kit, 'id' | 'created_at' | 'updated_at'>;
+  currentKit: WorkingKit;
   categoryList: Category[];
   budget: number;
   maxWeight: number;

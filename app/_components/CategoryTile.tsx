@@ -1,12 +1,12 @@
 import useCategoryCoverage from "../_hooks/useCategoryCoverage";
 import { AllIcon, FireIcon, FoodIcon, MedicalIcon, ShelterIcon, ToolsIcon, WaterIcon } from "./Icons";
-import { Category, Kit } from "../_types";
+import { Category, WorkingKit } from "../_types";
 
 type CategoryTileProps = {
   category: Category;
   selectedCategory: string | null;
   onSelect: (category: string) => void;
-  currentKit: Omit<Kit, 'id' | 'created_at' | 'updated_at'>;
+  currentKit: WorkingKit;
 };
 
 export default function CategoryTile({

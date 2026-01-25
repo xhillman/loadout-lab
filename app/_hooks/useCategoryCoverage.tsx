@@ -1,4 +1,4 @@
-import { Category, Kit } from "../_types";
+import { Category, WorkingKit } from "../_types";
 
 // Core capabilities required per category to unlock full coverage potential
 const REQUIRED_CAPABILITIES: Record<string, string[]> = {
@@ -15,7 +15,7 @@ const MISSING_CAPABILITY_CAP = 70;
 
 export default function useCategoryCoverage(
   category: Category,
-  currentKit: Omit<Kit, 'id' | 'created_at' | 'updated_at'>
+  currentKit: WorkingKit
 ) {
   const categoryKey = category.name.toLowerCase();
   const threshold = category.coverage;

@@ -2,10 +2,10 @@
 
 import { useMemo } from "react";
 
-import { Kit } from "../_types";
+import { WorkingKit } from "../_types";
 
 type StatsPanelProps = {
-  currentKit: Omit<Kit, 'id' | 'created_at' | 'updated_at'>;
+  currentKit: WorkingKit;
   budget: number;
   maxWeight: number;
 };

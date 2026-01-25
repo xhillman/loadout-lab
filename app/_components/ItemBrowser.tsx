@@ -1,12 +1,12 @@
 
 import ItemCard from "./ItemCard";
-import { Item, Kit } from "../_types";
+import { Item, WorkingKit } from "../_types";
 
 type ItemBrowserProps = {
   selectedCategory: string | null;
   itemList: Item[];
   toggleItemInKit: (item: Item) => void;
-  currentKit: Omit<Kit, 'id' | 'created_at' | 'updated_at'>;
+  currentKit: WorkingKit;
 };
 
 export default function ItemBrowser({ selectedCategory, itemList, toggleItemInKit, currentKit }: ItemBrowserProps) {

@@ -1,9 +1,9 @@
-import { Category, Kit } from "../_types";
+import { Category, WorkingKit } from "../_types";
 import CoverageTile from "./CoverageTile";
 
 type CoveragePanelProps = {
   categoryList: Category[];
-  currentKit: Omit<Kit, 'id' | 'created_at' | 'updated_at'>;
+  currentKit: WorkingKit;
 };
 
 export default function CoveragePanel({ categoryList, currentKit }: CoveragePanelProps) {

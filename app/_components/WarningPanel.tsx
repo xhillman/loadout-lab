@@ -1,8 +1,8 @@
-import { Kit, Warning } from "../_types";
+import { Warning, WorkingKit } from "../_types";
 import useWarnings from "../_hooks/useWarnings";
 
 type WarningPanelProps = {
-  currentKit: Omit<Kit, 'id' | 'created_at' | 'updated_at'>;
+  currentKit: WorkingKit;
 };
 
 function WarningIcon({ severity }: { severity: Warning['severity'] }) {

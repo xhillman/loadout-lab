@@ -1,11 +1,11 @@
 import CategoryTile from "./CategoryTile";
 import categories from "../_data/categories.json";
-import { Kit } from "../_types";
+import { WorkingKit } from "../_types";
 
 type CategoryRailProps = {
   selectedCategory: string | null;
   onSelectCategory: (category: string) => void;
-  currentKit: Omit<Kit, 'id' | 'created_at' | 'updated_at'>;
+  currentKit: WorkingKit;
 };
 
 export default function CategoryRail({ selectedCategory, onSelectCategory, currentKit }: CategoryRailProps) {

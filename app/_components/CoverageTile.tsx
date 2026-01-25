@@ -1,9 +1,9 @@
 import useCategoryCoverage from "../_hooks/useCategoryCoverage";
-import { Category, Kit } from "../_types";
+import { Category, WorkingKit } from "../_types";
 
 type CoverageTileProps = {
   category: Category;
-  currentKit: Omit<Kit, 'id' | 'created_at' | 'updated_at'>;
+  currentKit: WorkingKit;
 };
 
 export default function CoverageTile({ category, currentKit }: CoverageTileProps) {

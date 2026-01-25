@@ -1,9 +1,9 @@
-import { Item, Kit } from "../_types";
+import { Item, WorkingKit } from "../_types";
 
 type ItemCardProps = {
   item: Item;
   toggleItemInKit: (item: Item) => void;
-  currentKit: Omit<Kit, "id" | "created_at" | "updated_at">;
+  currentKit: WorkingKit;
 };
 
 export default function ItemCard({
