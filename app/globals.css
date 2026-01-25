@@ -65,11 +65,9 @@
 @source inline("{border-accent-red/20,border-accent-red/30,border-accent-red/50}");
 @source inline("{shadow-panel,shadow-card,shadow-lift,shadow-inset-soft}");
 @source inline("{ease-smooth}");
-/* Dynamic coverage indicator colors */
-@source inline("{bg-red-600/50,bg-yellow-600/50,bg-green-600/50}");
-@source inline("{ring-red-600/20,ring-yellow-600/20,ring-green-600/20}");
 
-  /* Base Styles */
+
+/* Base Styles */
 
 body {
   background: var(--color-bg-deep);

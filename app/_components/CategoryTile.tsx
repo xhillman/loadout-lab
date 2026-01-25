@@ -29,6 +29,12 @@ export default function CategoryTile({
 
   const coverageIndicatorColor = useCategoryCoverage(category, currentKit).color;
 
+  const colorClasses = {
+    red: "bg-red-600/50 ring-red-600/20",
+    yellow: "bg-yellow-600/50 ring-yellow-600/20",
+    green: "bg-green-600/50 ring-green-600/20",
+  } as const;
+
   return (
     <li
       className={`category-tile w-full mb-2 rounded-lg cursor-pointer ${
@@ -42,7 +48,7 @@ export default function CategoryTile({
         <h2 className="text-lg font-bold flex items-center gap-3 text-text-primary">{icon} {category.name}</h2>
         {
           category.name !== "All" && (
-            <div className={`h-3 w-3 rounded-full bg-${coverageIndicatorColor}-600/50 ring-2 ring-${coverageIndicatorColor}-600/20`}></div>
+            <div className={`h-3 w-3 rounded-full ${colorClasses[coverageIndicatorColor]} ring-2`}></div>
           )
         }
       </div>

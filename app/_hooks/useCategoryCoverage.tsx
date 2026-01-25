@@ -57,7 +57,7 @@ export default function useCategoryCoverage(
   const visiblePercentage = Math.min(actualPercentage, 100);
   
   // Color based on actual (possibly capped) percentage
-  const color = actualPercentage <= 30 ? 'red' 
+  const color: "red" | "yellow" | "green" = actualPercentage <= 30 ? 'red' 
     : actualPercentage <= 70 ? 'yellow' 
     : 'green';
   
