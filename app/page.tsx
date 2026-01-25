@@ -19,13 +19,12 @@ const itemList: Item[] = items as Item[];
 const categoryList: Category[] = categories.categories as Category[];  
 
 export default function Home() {
-  
+
   // Store state and actions
   const { 
     kit, 
     isDirty, 
     savedKits,
-    toggleItem, 
     loadKit, 
     saveCurrentKit, 
     deleteKit, 
@@ -82,7 +81,7 @@ export default function Home() {
           <CategoryRail selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory}/>
         </div>
         <div className="col-span-7 h-full bg-bg-base/30 overflow-y-auto">
-          <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay} toggleItemInKit={toggleItem} currentKit={kit} />
+          <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay}/>
         </div>
         <div className="col-span-3 h-full bg-surface-1/50 border-l border-border-soft p-4 shadow-panel overflow-hidden">
           <StatsRail currentKit={kit} categoryList={categoryList} budget={budget} maxWeight={maxWeight} />

@@ -1,19 +1,16 @@
-import { Item, WorkingKit } from "../_types";
+import { Item } from "../_types";
+import { useKitStore } from "../_stores/useKitStore";
 
 type ItemCardProps = {
   item: Item;
-  toggleItemInKit: (item: Item) => void;
-  currentKit: WorkingKit;
 };
 
 export default function ItemCard({
   item,
-  toggleItemInKit,
-  currentKit,
 }: ItemCardProps) {
-  const isItemInKit = currentKit.items.some(
-    (kitItem) => kitItem.id === item.id
-  );
+  const { kit, toggleItem } = useKitStore();
+
+  const isItemInKit = kit.items.some((kitItem) => kitItem.id === item.id);
 
   return (
     <div className={`item-card p-4 rounded-lg flex flex-col justify-between min-h-[180px] transition-all duration-200 ease-smooth ${
@@ -35,7 +32,7 @@ export default function ItemCard({
               ? "bg-accent-red/15 border border-accent-red/30 text-accent-red hover:bg-accent-red/25 hover:border-accent-red/50" 
               : "bg-accent-green/15 border border-accent-green/30 text-accent-green hover:bg-accent-green/25 hover:border-accent-green/50"
           }`}
-          onClick={() => toggleItemInKit(item)}
+          onClick={() => toggleItem(item)}
         >
           {isItemInKit ? "Remove" : "+ Add"}
         </button>
