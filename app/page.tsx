@@ -27,13 +27,6 @@ export default function Home() {
 
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>("All");
-  const itemsToDisplay = useMemo(() => {
-    if (!selectedCategory || selectedCategory === "All") {
-      return itemList;
-    }
-    return itemList.filter((item) => 
-      item.category.toLowerCase() === selectedCategory.toLowerCase());
-  }, [selectedCategory]);
 
   const [budget, setBudget] = useState(300);
   const [maxWeight, setMaxWeight] = useState(400);
@@ -49,6 +42,17 @@ export default function Home() {
       max_budget_usd: budget,
     },
   });
+
+  const itemsToDisplay = useMemo(() => {
+    if (selectedCategory === "Gear List") {
+      return kit.items;
+    }
+    if (!selectedCategory || selectedCategory === "All") {
+      return itemList;
+    }
+    return itemList.filter((item) => 
+      item.category.toLowerCase() === selectedCategory.toLowerCase());
+  }, [selectedCategory, kit.items]);
 
   useEffect(() => {
     const currentKit = getCurrentKit();

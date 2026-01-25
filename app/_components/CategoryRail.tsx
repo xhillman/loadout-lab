@@ -19,7 +19,14 @@ export default function CategoryRail({ selectedCategory, onSelectCategory, curre
           <CategoryTile key={category.name} category={category} selectedCategory={selectedCategory} onSelect={onSelectCategory} currentKit={currentKit} />
         ))}
       </ul>
-      <button className="gear-list-button w-full mb-2 bg-card-base border border-border-soft rounded-lg flex items-center justify-between py-3 px-4 cursor-pointer hover:bg-card-hover hover:border-border-base shadow-card transition-all duration-200 ease-smooth text-xl font-bold text-text-primary">
+      <button 
+        onClick={() => onSelectCategory("Gear List")}
+        className={`gear-list-button w-full mb-2 bg-card-base border rounded-lg flex items-center justify-between py-3 px-4 cursor-pointer shadow-card transition-all duration-200 ease-smooth text-xl font-bold ${
+          selectedCategory === "Gear List" 
+            ? "border-accent-primary bg-accent-primary/10 text-accent-primary" 
+            : "border-border-soft hover:bg-card-hover hover:border-border-base text-text-primary"
+        }`}
+      >
         Gear List
       </button>
     </div>
