@@ -1,14 +1,16 @@
 import useCategoryCoverage from "../_hooks/useCategoryCoverage";
-import { Category, WorkingKit } from "../_types";
+import { useKitStore } from "../_stores/useKitStore";
+import { Category } from "../_types";
 
 type CoverageTileProps = {
   category: Category;
-  currentKit: WorkingKit;
 };
 
-export default function CoverageTile({ category, currentKit }: CoverageTileProps) {
+export default function CoverageTile({ category }: CoverageTileProps) {
 
-const { visiblePercentage, actualPercentage, color } = useCategoryCoverage(category, currentKit);
+const { kit } = useKitStore();
+
+const { visiblePercentage, actualPercentage, color } = useCategoryCoverage(category, kit);
 
 const transitionTime = visiblePercentage * 10;
 

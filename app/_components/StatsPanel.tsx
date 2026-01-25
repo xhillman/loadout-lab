@@ -1,26 +1,24 @@
 "use client";
 
+import { useKitStore } from "../_stores/useKitStore";
 import { useMemo } from "react";
 
-import { WorkingKit } from "../_types";
 import { WarningIcon } from "./Icons";
 
-type StatsPanelProps = {
-  currentKit: WorkingKit;
-  budget: number;
-  maxWeight: number;
-};
+export default function StatsPanel() {
 
+  const { kit } = useKitStore();
 
-export default function StatsPanel({ currentKit, maxWeight, budget }: StatsPanelProps) {
+  const maxWeight = kit.constraints.max_weight_oz;
+  const budget = kit.constraints.max_budget_usd;
 
   const currentKitWeight = useMemo(() => {
-    return currentKit.items.reduce((currentWeight, item) => currentWeight + item.weight_oz, 0);
-  }, [currentKit]);
+    return kit.items.reduce((currentWeight, item) => currentWeight + item.weight_oz, 0);
+  }, [kit.items]);
 
   const currentKitCost = useMemo(() => {
-    return currentKit.items.reduce((currentCostUsd, item) => currentCostUsd + item.price_usd, 0);
-  }, [currentKit]);
+    return kit.items.reduce((currentCostUsd, item) => currentCostUsd + item.price_usd, 0);
+  }, [kit.items]);
 
   const isOverWeight = currentKitWeight > maxWeight;
   const isOverBudget = currentKitCost > budget;
@@ -67,7 +65,7 @@ export default function StatsPanel({ currentKit, maxWeight, budget }: StatsPanel
 
       <div className="px-3 py-2 -mx-1">
         <p className="font-bold text-text-secondary">
-          Items: <span className="text-text-primary">{currentKit.items.length}</span>
+          Items: <span className="text-text-primary">{kit.items.length}</span>
         </p>
       </div>
     </div>

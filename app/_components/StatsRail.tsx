@@ -2,22 +2,19 @@ import StatsPanel from "./StatsPanel";
 import CoveragePanel from "./CoveragePanel";
 import WarningPanel from "./WarningPanel";
 
-import { Category, WorkingKit } from "../_types";
+import { Category } from "../_types";
 
 type StatsRailProps = {
-  currentKit: WorkingKit;
   categoryList: Category[];
-  budget: number;
-  maxWeight: number;
 };
 
-export default function StatsRail({ currentKit, categoryList, budget, maxWeight }: StatsRailProps) {
+export default function StatsRail({ categoryList }: StatsRailProps) {
   return (
     <div className="stats-rail h-full flex flex-col gap-5 overflow-hidden">
-      <StatsPanel currentKit={currentKit} budget={budget} maxWeight={maxWeight} />
-      <CoveragePanel categoryList={categoryList} currentKit={currentKit}/>
+      <StatsPanel />
+      <CoveragePanel categoryList={categoryList} />
       <div className="flex-1 min-h-0">
-        <WarningPanel currentKit={currentKit} />
+        <WarningPanel />
       </div>
     </div>
   );

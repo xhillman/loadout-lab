@@ -1,14 +1,11 @@
-import { WorkingKit } from "../_types";
 import useWarnings from "../_hooks/useWarnings";
 import { WarningIcon } from "./Icons";
+import { useKitStore } from "../_stores/useKitStore";
 
-type WarningPanelProps = {
-  currentKit: WorkingKit;
-};
+export default function WarningPanel() {
 
-
-export default function WarningPanel({ currentKit }: WarningPanelProps) {
-  const warnings = useWarnings(currentKit);
+  const { kit } = useKitStore();
+  const warnings = useWarnings(kit);
 
   return (
     <div className="warning-panel panel rounded-lg p-4 h-full flex flex-col overflow-hidden">
@@ -17,7 +14,7 @@ export default function WarningPanel({ currentKit }: WarningPanelProps) {
       </h2>
       
       <div className="flex-1 min-h-0 overflow-y-auto">
-        {currentKit.items.length === 0 ? (
+        {kit.items.length === 0 ? (
           <p className="text-text-muted text-sm">Add items to see coverage analysis</p>
         ) : warnings.length === 0 ? (
           <p className="text-green-500 text-sm">✓ No issues detected</p>

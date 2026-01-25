@@ -37,9 +37,6 @@ export default function Home() {
   const [isSaveKitModalOpen, setIsSaveKitModalOpen] = useState(false);
   const [isLoadKitModalOpen, setIsLoadKitModalOpen] = useState(false);
 
-  const budget = kit.constraints.max_budget_usd;
-  const maxWeight = kit.constraints.max_weight_oz;
-
   const itemsToDisplay = useMemo(() => {
     if (selectedCategory === "Gear List") {
       return kit.items;
@@ -84,7 +81,7 @@ export default function Home() {
           <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay}/>
         </div>
         <div className="col-span-3 h-full bg-surface-1/50 border-l border-border-soft p-4 shadow-panel overflow-hidden">
-          <StatsRail currentKit={kit} categoryList={categoryList} budget={budget} maxWeight={maxWeight} />
+          <StatsRail categoryList={categoryList} />
         </div>
       </main>
       <SaveKitModal isOpen={isSaveKitModalOpen} closeModal={handleSaveKitClick} kit={kit} onSaveComplete={markClean} />
