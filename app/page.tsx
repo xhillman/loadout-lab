@@ -19,12 +19,12 @@ const itemList: Item[] = items as Item[];
 const categoryList: Category[] = categories.categories as Category[];  
 
 export default function Home() {
+  
   // Store state and actions
   const { 
     kit, 
     isDirty, 
-    savedKits, 
-    updateConstraints, 
+    savedKits,
     toggleItem, 
     loadKit, 
     saveCurrentKit, 
@@ -73,22 +73,13 @@ export default function Home() {
     setIsLoadKitModalOpen(false);
   };
 
-  // Constraint handlers
-  const handleBudgetChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    updateConstraints({ max_budget_usd: Number(event.target.value) });
-  };
-
-  const handleMaxWeightChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    updateConstraints({ max_weight_oz: Number(event.target.value) });
-  };
-
   return (
     <div className="app font-rajdhani text-text-primary h-screen flex flex-col overflow-hidden">
       <Header onSaveKitClick={handleSaveKitClick} onLoadKitClick={handleLoadKitClick} />
       <SettingsBar />
       <main className="flex-1 grid grid-cols-12 overflow-hidden">
         <div className="col-span-2 h-full bg-surface-1/50 border-r border-border-soft p-4 shadow-panel overflow-hidden">
-          <CategoryRail selectedCategory={selectedCategory} onSelectCategory={(category) => setSelectedCategory(category)} currentKit={kit}/>
+          <CategoryRail selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory}/>
         </div>
         <div className="col-span-7 h-full bg-bg-base/30 overflow-y-auto">
           <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay} toggleItemInKit={toggleItem} currentKit={kit} />

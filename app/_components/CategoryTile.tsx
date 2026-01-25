@@ -1,20 +1,24 @@
+"use client";
+
+import { useKitStore } from "../_stores/useKitStore";
 import useCategoryCoverage from "../_hooks/useCategoryCoverage";
 import { AllIcon, FireIcon, FoodIcon, MedicalIcon, ShelterIcon, ToolsIcon, WaterIcon } from "./Icons";
-import { Category, WorkingKit } from "../_types";
+import { Category } from "../_types";
 
 type CategoryTileProps = {
   category: Category;
   selectedCategory: string | null;
   onSelect: (category: string) => void;
-  currentKit: WorkingKit;
 };
 
 export default function CategoryTile({
   category,
   selectedCategory,
-  onSelect,
-  currentKit,
+  onSelect
 }: CategoryTileProps) {
+
+  const { kit } = useKitStore();
+
   const isSelected = selectedCategory === category.name;
 
   const icon = {
@@ -27,7 +31,7 @@ export default function CategoryTile({
     "All": <AllIcon />,
   }[category.name];
 
-  const coverageIndicatorColor = useCategoryCoverage(category, currentKit).color;
+  const coverageIndicatorColor = useCategoryCoverage(category, kit).color;
 
   const colorClasses = {
     red: "bg-red-600/50 ring-red-600/20",

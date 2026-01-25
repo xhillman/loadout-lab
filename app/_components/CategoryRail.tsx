@@ -1,14 +1,12 @@
 import CategoryTile from "./CategoryTile";
 import categories from "../_data/categories.json";
-import { WorkingKit } from "../_types";
 
 type CategoryRailProps = {
   selectedCategory: string | null;
   onSelectCategory: (category: string) => void;
-  currentKit: WorkingKit;
 };
 
-export default function CategoryRail({ selectedCategory, onSelectCategory, currentKit }: CategoryRailProps) {
+export default function CategoryRail({ selectedCategory, onSelectCategory }: CategoryRailProps) {
 
   const categoryList = categories.categories;
 
@@ -16,7 +14,7 @@ export default function CategoryRail({ selectedCategory, onSelectCategory, curre
     <div className="category-rail h-full flex flex-col justify-between">
       <ul>
         {categoryList.map((category) => (
-          <CategoryTile key={category.name} category={category} selectedCategory={selectedCategory} onSelect={onSelectCategory} currentKit={currentKit} />
+          <CategoryTile key={category.name} category={category} selectedCategory={selectedCategory} onSelect={onSelectCategory}/>
         ))}
       </ul>
       <button 
