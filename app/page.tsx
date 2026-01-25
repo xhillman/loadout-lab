@@ -85,7 +85,7 @@ export default function Home() {
   return (
     <div className="app font-rajdhani text-text-primary h-screen flex flex-col overflow-hidden">
       <Header onSaveKitClick={handleSaveKitClick} onLoadKitClick={handleLoadKitClick} />
-      <SettingsBar budget={budget} maxWeight={maxWeight} onBudgetChange={handleBudgetChange} onMaxWeightChange={handleMaxWeightChange} />
+      <SettingsBar />
       <main className="flex-1 grid grid-cols-12 overflow-hidden">
         <div className="col-span-2 h-full bg-surface-1/50 border-r border-border-soft p-4 shadow-panel overflow-hidden">
           <CategoryRail selectedCategory={selectedCategory} onSelectCategory={(category) => setSelectedCategory(category)} currentKit={kit}/>
