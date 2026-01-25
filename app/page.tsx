@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
-
-import useKitStore from "./_hooks/useKitStore";
+import { useState, useMemo } from "react";
+import { useKitStore } from "./_stores/useKitStore";
 
 import Header from "./_components/Header";
 import CategoryRail from "./_components/CategoryRail";
@@ -14,34 +13,33 @@ import LoadKitModal from "./_components/LoadKitModal";
 
 import items from "./_data/items.json";
 import categories from "./_data/categories.json";
-import { Item, Kit, Category } from "./_types";
+import { Item, Category } from "./_types";
 
 const itemList: Item[] = items as Item[];
 const categoryList: Category[] = categories.categories as Category[];  
 
 export default function Home() {
+  // Store state and actions
+  const { 
+    kit, 
+    isDirty, 
+    savedKits, 
+    updateConstraints, 
+    toggleItem, 
+    loadKit, 
+    saveCurrentKit, 
+    deleteKit, 
+    renameKit, 
+    markClean 
+  } = useKitStore();
 
-  const { getCurrentKit, setCurrentKit, getSavedKits, saveKit, deleteKit, renameKit } = useKitStore();
-
-  const [isDirty, setIsDirty] = useState(false);
-
-
+  // UI state (local only)
   const [selectedCategory, setSelectedCategory] = useState<string | null>("All");
+  const [isSaveKitModalOpen, setIsSaveKitModalOpen] = useState(false);
+  const [isLoadKitModalOpen, setIsLoadKitModalOpen] = useState(false);
 
-  const [budget, setBudget] = useState(300);
-  const [maxWeight, setMaxWeight] = useState(400);
-
-  const [kit, setKit] = useState<Kit>({
-    id: "",
-    name: "Untitled Kit",
-    created_at: "",
-    updated_at: "",
-    items: [],
-    constraints: {
-      max_weight_oz: maxWeight,
-      max_budget_usd: budget,
-    },
-  });
+  const budget = kit.constraints.max_budget_usd;
+  const maxWeight = kit.constraints.max_weight_oz;
 
   const itemsToDisplay = useMemo(() => {
     if (selectedCategory === "Gear List") {
@@ -54,98 +52,35 @@ export default function Home() {
       item.category.toLowerCase() === selectedCategory.toLowerCase());
   }, [selectedCategory, kit.items]);
 
-  useEffect(() => {
-    const currentKit = getCurrentKit();
-    if (currentKit) {
-      setKit(currentKit);
-    } else {
-      setKit(prev => ({
-        ...prev,
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
-      }));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const [isSaveKitModalOpen, setIsSaveKitModalOpen] = useState(false);
-
+  // Modal handlers
   const handleSaveKitClick = () => {
     setIsSaveKitModalOpen(!isSaveKitModalOpen);
-  }
-
-  const [isLoadKitModalOpen, setIsLoadKitModalOpen] = useState(false);
-  const [savedKits, setSavedKits] = useState<Kit[]>([]);
-  
-
-const handleLoadKit = () => {
-  const savedKits = getSavedKits();
-  setSavedKits(savedKits);
-}
+  };
 
   const handleLoadKitClick = () => {
     setIsLoadKitModalOpen(!isLoadKitModalOpen);
-    handleLoadKit();
-  }
+  };
 
-  const handleSetCurrentKit = (loadedKit: Kit) => {
-    setKit(loadedKit);
-    setCurrentKit(loadedKit);
-    setIsDirty(false);
+  // Kit actions
+  const handleLoadKit = (kitToLoad: typeof kit) => {
+    loadKit(kitToLoad);
     setIsLoadKitModalOpen(false);
-  }
+  };
 
-  const handleSaveAndLoad = (kitToLoad: Kit, saveName: string) => {
-    saveKit(kit, saveName);
-    setKit(kitToLoad);
-    setCurrentKit(kitToLoad);
-    setIsDirty(false);
+  const handleSaveAndLoad = (kitToLoad: typeof kit, saveName: string) => {
+    saveCurrentKit(saveName);
+    loadKit(kitToLoad);
     setIsLoadKitModalOpen(false);
-  }
+  };
 
-  const handleDeleteKit = (kitId: string) => {
-    deleteKit(kitId);
-    setSavedKits(getSavedKits());
-  }
-
-  const handleRenameKit = (kitId: string, newName: string) => {
-    renameKit(kitId, newName);
-    setSavedKits(getSavedKits());
-  }
-
+  // Constraint handlers
   const handleBudgetChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setBudget(Number(event.target.value));
-    setKit((prevKit) => ({
-      ...prevKit,
-      constraints: {
-        ...prevKit.constraints,
-        max_budget_usd: Number(event.target.value),
-      },
-    }));
-    setIsDirty(true);
-  }
-  const handleMaxWeightChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setMaxWeight(Number(event.target.value));
-    setKit((prevKit) => ({
-      ...prevKit,
-      constraints: {
-        ...prevKit.constraints,
-        max_weight_oz: Number(event.target.value),
-      },
-    }));
-    setIsDirty(true);
-  }
+    updateConstraints({ max_budget_usd: Number(event.target.value) });
+  };
 
-  const toggleItemInKit = (item: Item) => {
-    const isItemInKit = kit.items.some((kitItem) => kitItem.id === item.id);
-    const newKit = {
-      ...kit,
-      items: isItemInKit ? kit.items.filter((kitItem) => kitItem.id !== item.id) : [...kit.items, item],
-    }
-    setKit(newKit);
-    setCurrentKit(newKit);
-    setIsDirty(true);
-  }
+  const handleMaxWeightChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    updateConstraints({ max_weight_oz: Number(event.target.value) });
+  };
 
   return (
     <div className="app font-rajdhani text-text-primary h-screen flex flex-col overflow-hidden">
@@ -156,22 +91,22 @@ const handleLoadKit = () => {
           <CategoryRail selectedCategory={selectedCategory} onSelectCategory={(category) => setSelectedCategory(category)} currentKit={kit}/>
         </div>
         <div className="col-span-7 h-full bg-bg-base/30 overflow-y-auto">
-          <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay} toggleItemInKit={toggleItemInKit} currentKit={kit} />
+          <ItemBrowser selectedCategory={selectedCategory} itemList={itemsToDisplay} toggleItemInKit={toggleItem} currentKit={kit} />
         </div>
         <div className="col-span-3 h-full bg-surface-1/50 border-l border-border-soft p-4 shadow-panel overflow-hidden">
           <StatsRail currentKit={kit} categoryList={categoryList} budget={budget} maxWeight={maxWeight} />
         </div>
       </main>
-      <SaveKitModal isOpen={isSaveKitModalOpen} closeModal={handleSaveKitClick} kit={kit} onSaveComplete={() => setIsDirty(false)} />
+      <SaveKitModal isOpen={isSaveKitModalOpen} closeModal={handleSaveKitClick} kit={kit} onSaveComplete={markClean} />
       <LoadKitModal 
         isOpen={isLoadKitModalOpen} 
         closeModal={handleLoadKitClick} 
-        setCurrentKit={handleSetCurrentKit} 
+        setCurrentKit={handleLoadKit} 
         savedKits={savedKits}
         isDirty={isDirty}
         onSaveAndLoad={handleSaveAndLoad}
-        onDeleteKit={handleDeleteKit}
-        onRenameKit={handleRenameKit}
+        onDeleteKit={deleteKit}
+        onRenameKit={renameKit}
       />
     </div>
   );

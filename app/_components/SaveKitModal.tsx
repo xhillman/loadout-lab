@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Modal from "./Modal";
-import useKitStore from "../_hooks/useKitStore";
+import { useKitStore } from "../_stores/useKitStore";
 import { Kit } from "../_types";
 
 type SaveKitModalProps = {
@@ -13,12 +13,12 @@ type SaveKitModalProps = {
 };
 
 export default function SaveKitModal({ isOpen, closeModal, kit, onSaveComplete }: SaveKitModalProps) {
-  const { saveKit } = useKitStore();
+  const { saveCurrentKit } = useKitStore();
   const [kitName, setKitName] = useState("");
 
   const handleSave = () => {
     if (kitName.trim()) {
-      saveKit(kit, kitName.trim());
+      saveCurrentKit(kitName.trim());
       setKitName("");
       closeModal();
       onSaveComplete?.();
