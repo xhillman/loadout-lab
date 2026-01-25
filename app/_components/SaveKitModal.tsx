@@ -3,16 +3,13 @@
 import { useState } from "react";
 import Modal from "./Modal";
 import { useKitStore } from "../_stores/useKitStore";
-import { Kit } from "../_types";
 
 type SaveKitModalProps = {
   isOpen: boolean;
   closeModal: () => void;
-  kit: Kit;
-  onSaveComplete?: () => void;
 };
 
-export default function SaveKitModal({ isOpen, closeModal, kit, onSaveComplete }: SaveKitModalProps) {
+export default function SaveKitModal({ isOpen, closeModal }: SaveKitModalProps) {
   const { saveCurrentKit } = useKitStore();
   const [kitName, setKitName] = useState("");
 
@@ -21,7 +18,6 @@ export default function SaveKitModal({ isOpen, closeModal, kit, onSaveComplete }
       saveCurrentKit(kitName.trim());
       setKitName("");
       closeModal();
-      onSaveComplete?.();
     }
   };
 

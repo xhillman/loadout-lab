@@ -2,29 +2,20 @@
 
 import { useState, useRef, useEffect } from "react";
 import Modal from "./Modal";
+import { useKitStore } from "../_stores/useKitStore";
 import { Kit } from "../_types";
 
 type LoadKitModalProps = {
   isOpen: boolean;
   closeModal: () => void;
-  setCurrentKit: (kit: Kit) => void;
-  savedKits: Kit[];
-  isDirty: boolean;
-  onSaveAndLoad: (kitToLoad: Kit, saveName: string) => void;
-  onDeleteKit: (kitId: string) => void;
-  onRenameKit: (kitId: string, newName: string) => void;
 };
 
 export default function LoadKitModal({ 
   isOpen, 
   closeModal, 
-  setCurrentKit, 
-  savedKits, 
-  isDirty, 
-  onSaveAndLoad,
-  onDeleteKit,
-  onRenameKit,
 }: LoadKitModalProps) {
+
+  const { isDirty, savedKits, loadKit, saveCurrentKit, deleteKit, renameKit } = useKitStore();
 
   const [pendingKit, setPendingKit] = useState<Kit | null>(null);
   const [saveName, setSaveName] = useState("");
@@ -65,23 +56,27 @@ export default function LoadKitModal({
     if (isDirty) {
       setPendingKit(kit);
     } else {
-      setCurrentKit(kit);
+      loadKit(kit);
+      closeModal();
     }
   };
 
   const handleSaveAndLoad = () => {
     if (pendingKit && saveName.trim()) {
-      onSaveAndLoad(pendingKit, saveName.trim());
+      saveCurrentKit(saveName.trim());
+      loadKit(pendingKit);
       setPendingKit(null);
       setSaveName("");
+      closeModal();
     }
   };
 
   const handleLoadWithoutSaving = () => {
     if (pendingKit) {
-      setCurrentKit(pendingKit);
+      loadKit(pendingKit);
       setPendingKit(null);
       setSaveName("");
+      closeModal();
     }
   };
 
@@ -122,7 +117,7 @@ export default function LoadKitModal({
 
   const handleRenameSubmit = (kitId: string) => {
     if (renameValue.trim()) {
-      onRenameKit(kitId, renameValue.trim());
+      renameKit(kitId, renameValue.trim());
     }
     setRenamingKitId(null);
     setRenameValue("");
@@ -140,7 +135,7 @@ export default function LoadKitModal({
 
   const handleDeleteConfirm = () => {
     if (deletingKit) {
-      onDeleteKit(deletingKit.id);
+      deleteKit(deletingKit.id);
       setDeletingKit(null);
     }
   };
