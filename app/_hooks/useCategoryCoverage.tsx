@@ -1,14 +1,5 @@
 import { Category, WorkingKit } from "../_types";
-
-// Core capabilities required per category to unlock full coverage potential
-const REQUIRED_CAPABILITIES: Record<string, string[]> = {
-  water: ['water_storage', 'water_treatment'],
-  fire: ['fire_ignition', 'fire_tinder'],
-  shelter: ['shelter_overhead', 'shelter_insulation', 'shelter_cordage'],
-  food: ['food_calories'],
-  medical: ['medical_wound_care'],
-  tools: ['tools_illumination', 'tools_cutting'],
-};
+import { REQUIRED_CAPABILITIES } from "../_constants/capabilities";
 
 // Cap percentage when missing core capabilities
 const MISSING_CAPABILITY_CAP = 70;
