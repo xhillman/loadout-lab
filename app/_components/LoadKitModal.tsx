@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Modal from "./Modal";
 import { Kit } from "../_types";
 
 type LoadKitModalProps = {
@@ -151,93 +152,85 @@ export default function LoadKitModal({
   // Show delete confirmation dialog
   if (deletingKit) {
     return (
-      <>
-        {/* Backdrop */}
-        <div 
-          className="fixed inset-0 bg-black/50 z-40" 
-          onClick={handleDeleteCancel}
-        />
-        
-        {/* Delete Confirmation Modal */}
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 min-w-[360px] rounded-xl p-6 bg-card-base border border-border-soft shadow-2xl">
-          <h1 className="text-xl font-bold text-text-primary mb-1">Delete Kit</h1>
-          <p className="text-text-secondary text-sm mb-5">
+      <Modal
+        isOpen
+        onClose={handleDeleteCancel}
+        title="Delete Kit"
+        description={
+          <>
             Are you sure you want to delete <span className="text-red-400 font-semibold">&quot;{deletingKit.name}&quot;</span>? This action cannot be undone.
-          </p>
-          
-          <div className="flex flex-col gap-2">
-            <button 
-              className="bg-red-500/20 border border-red-500/30 hover:bg-red-500/30 text-base font-bold px-5 py-3 rounded-lg cursor-pointer shadow-card text-red-400 transition-all duration-200 ease-smooth"
-              onClick={handleDeleteConfirm}
-            >
-              Delete Kit
-            </button>
-            <button 
-              className="bg-card-base border border-border-soft hover:bg-card-hover text-base font-bold px-5 py-3 rounded-lg cursor-pointer shadow-card text-text-secondary transition-all duration-200 ease-smooth"
-              onClick={handleDeleteCancel}
-            >
-              Cancel
-            </button>
-          </div>
+          </>
+        }
+        width="md"
+      >
+        <div className="flex flex-col gap-2">
+          <button 
+            className="bg-red-500/20 border border-red-500/30 hover:bg-red-500/30 text-base font-bold px-5 py-3 rounded-lg cursor-pointer shadow-card text-red-400 transition-all duration-200 ease-smooth"
+            onClick={handleDeleteConfirm}
+          >
+            Delete Kit
+          </button>
+          <button 
+            className="bg-card-base border border-border-soft hover:bg-card-hover text-base font-bold px-5 py-3 rounded-lg cursor-pointer shadow-card text-text-secondary transition-all duration-200 ease-smooth"
+            onClick={handleDeleteCancel}
+          >
+            Cancel
+          </button>
         </div>
-      </>
+      </Modal>
     );
   }
 
   // Show confirmation dialog when there's a pending kit to load
   if (pendingKit) {
     return (
-      <>
-        {/* Backdrop */}
-        <div 
-          className="fixed inset-0 bg-black/50 z-40" 
-          onClick={handleCancel}
-        />
-        
-        {/* Confirmation Modal */}
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 min-w-[360px] rounded-xl p-6 bg-card-base border border-border-soft shadow-2xl">
-          <h1 className="text-xl font-bold text-text-primary mb-1">Unsaved Changes</h1>
-          <p className="text-text-secondary text-sm mb-5">
+      <Modal
+        isOpen
+        onClose={handleCancel}
+        title="Unsaved Changes"
+        description={
+          <>
             Save your current kit before loading <span className="text-accent-amber font-semibold">&quot;{pendingKit.name}&quot;</span>?
-          </p>
-          
-          <div className="mb-5">
-            <label htmlFor="save-name" className="block text-text-secondary text-sm mb-2">Save current kit as:</label>
-            <input 
-              type="text" 
-              id="save-name" 
-              value={saveName}
-              onChange={(e) => setSaveName(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && saveName.trim() && handleSaveAndLoad()}
-              placeholder="Enter kit name"
-              className="w-full p-3 border border-border-soft rounded-lg bg-surface-1 text-text-primary focus:outline-none focus:border-accent-amber/50 transition-colors"
-              autoFocus
-            />
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <button 
-              className="bg-accent-amber/20 border border-accent-amber/30 hover:bg-accent-amber/30 text-base font-bold px-5 py-3 rounded-lg cursor-pointer shadow-card text-text-primary transition-all duration-200 ease-smooth disabled:opacity-50 disabled:cursor-not-allowed"
-              onClick={handleSaveAndLoad}
-              disabled={!saveName.trim()}
-            >
-              Save & Load
-            </button>
-            <button 
-              className="bg-card-base border border-border-soft hover:bg-card-hover hover:border-accent-amber/30 text-base font-bold px-5 py-3 rounded-lg cursor-pointer shadow-card text-text-primary transition-all duration-200 ease-smooth"
-              onClick={handleLoadWithoutSaving}
-            >
-              Load Without Saving
-            </button>
-            <button 
-              className="bg-card-base border border-border-soft hover:bg-card-hover text-base font-bold px-5 py-3 rounded-lg cursor-pointer shadow-card text-text-secondary transition-all duration-200 ease-smooth"
-              onClick={handleCancel}
-            >
-              Cancel
-            </button>
-          </div>
+          </>
+        }
+        width="md"
+      >
+        <div className="mb-5">
+          <label htmlFor="save-name" className="block text-text-secondary text-sm mb-2">Save current kit as:</label>
+          <input 
+            type="text" 
+            id="save-name" 
+            value={saveName}
+            onChange={(e) => setSaveName(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && saveName.trim() && handleSaveAndLoad()}
+            placeholder="Enter kit name"
+            className="w-full p-3 border border-border-soft rounded-lg bg-surface-1 text-text-primary focus:outline-none focus:border-accent-amber/50 transition-colors"
+            autoFocus
+          />
         </div>
-      </>
+
+        <div className="flex flex-col gap-2">
+          <button 
+            className="bg-accent-amber/20 border border-accent-amber/30 hover:bg-accent-amber/30 text-base font-bold px-5 py-3 rounded-lg cursor-pointer shadow-card text-text-primary transition-all duration-200 ease-smooth disabled:opacity-50 disabled:cursor-not-allowed"
+            onClick={handleSaveAndLoad}
+            disabled={!saveName.trim()}
+          >
+            Save & Load
+          </button>
+          <button 
+            className="bg-card-base border border-border-soft hover:bg-card-hover hover:border-accent-amber/30 text-base font-bold px-5 py-3 rounded-lg cursor-pointer shadow-card text-text-primary transition-all duration-200 ease-smooth"
+            onClick={handleLoadWithoutSaving}
+          >
+            Load Without Saving
+          </button>
+          <button 
+            className="bg-card-base border border-border-soft hover:bg-card-hover text-base font-bold px-5 py-3 rounded-lg cursor-pointer shadow-card text-text-secondary transition-all duration-200 ease-smooth"
+            onClick={handleCancel}
+          >
+            Cancel
+          </button>
+        </div>
+      </Modal>
     );
   }
 
